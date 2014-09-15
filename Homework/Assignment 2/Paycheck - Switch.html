@@ -1,0 +1,58 @@
+<script type="text/javascript">
+	/*
+		Author: Brendon Quaitnance
+		Date: Sept 15th, 2014
+		Purpose: Calculate hours with Switch statements
+	*/
+</script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Paycheck If Statements</title>
+</head>
+
+<body>
+<script type="text/javascript">
+	//Declare and initialize variables
+	var hours = (Math.random()*20+30); //Hours worked in (hrs)
+	var payRate = 10; //Dollars per hour
+	var doubleTime = 20; //Hour at which over time starts
+	var triTime = 40
+	var payCheck; //Declare and not initialize
+	
+	//Output the input
+	document.write("<h2>Hours worked       = "+hours.toFixed(2)    +" (hrs)</h2>");
+	document.write("<h2>Pay Rate           = $"+payRate +"</h2>");
+	document.write("<h2>Double Time starts at $"+doubleTime+" (hrs)</h2>");
+	document.write("<h2>Triple Time starts at $"+triTime+" (hrs)</h2>");
+	
+	//Determine our pay check
+	//Straight time
+	switch (hours<=doubleTime)
+	{
+		//Straight Hours
+		case true:{
+			payCheck=hours*payRate;
+		}
+	}
+	switch(hours>doubleTime)
+	{
+		//Double Time
+		case true:{
+			payCheck=hours*payRate+(hours-doubleTime)*payRate;
+		}
+		//Triple Time
+		default :{
+			payCheck=hours*payRate+(hours-doubleTime)*payRate;
+			payCheck+=(hours-triTime)*payRate;
+		}
+	}
+	payCheck=payCheck.toFixed(2);
+	//Output  our Pay Check
+	document.write("<h1>Our Pay Check = $"+payCheck+"</h1>");
+
+</script>
+</body>
+</html>
