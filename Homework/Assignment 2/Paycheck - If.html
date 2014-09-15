@@ -16,14 +16,15 @@
 <body>
 <script type="text/javascript">
 	//Declare and initialize variables
-	var hours = (Math.random()*20+30); //Hours worked in (hrs)
+	var hours = parseInt(Math.random()*20+30);
 	var payRate = 10; //Dollars per hour
 	var doubleTime = 20; //Hour at which over time starts
 	var triTime = 40
 	var payCheck; //Declare and not initialize
 	
 	//Output the input
-	document.write("<h2>Hours worked       = "+hours.toFixed(2)    +" (hrs)</h2>");
+	document.write("<h1>Paycheck If Statements</h1>");
+	document.write("<h2>Hours worked       = "+hours.toFixed(2)+" (hrs)</h2>");
 	document.write("<h2>Pay Rate           = $"+payRate +"</h2>");
 	document.write("<h2>Double Time starts at $"+doubleTime+" (hrs)</h2>");
 	document.write("<h2>Triple Time starts at $"+triTime+" (hrs)</h2>");
@@ -34,7 +35,7 @@
 		payCheck=hours*payRate;
 	}
 	//Double Time
-	if (hours>doubleTime){
+	if (hours>=doubleTime){
 		payCheck=hours*payRate+(hours-doubleTime)*payRate;
 	}
 	//Triple Time
@@ -44,7 +45,7 @@
 	}
 	payCheck=payCheck.toFixed(2);
 	//Output  our Pay Check
-	document.write("<h1>Our Pay Check = $"+payCheck+"</h1>");
+	document.write("<h2>Our Pay Check = $"+payCheck+"</h2>");
 
 </script>
 </body>
