@@ -9,72 +9,84 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Retirement Account</title>
+<title>Paycheck Table</title>
 </head>
 
 <body>
 
 <h1>Paycheck Table</h1>
+<h2>by Brendon Quaintance</h2>
 <script type="text/javascript">
 	//Setup the Paycheck table
     var taxRate = .10;//unit = percentage tax per dollar
     var payRate = 10;
-	var str="";
+    var doubleTime = 20;
+    var triTime = 40;
+    var str = "";
+
 	//Declare your arrays
-	var hour=[];
+    var hour = [];
+    var displayRate = [];
 	var grossPay=[];
 	var payRate=[];
 	var taxes = [];
 	var netPay = [];
 
 	//Initialize the first element
-	hour[0]=0;
+	hour[0] = 0;
 	grossPay[0] = 0;
-	payRate[0]=0;
+	payRate[0]= 0;
 	taxes[0] = 0;
 	netPay[0] = 0;
 
 	//Populate the arrays
 	for (var hours = 0; hours <= 72; ++hours) {
-	    hour[hours] = hour;
+        //Initializing hours and taxes
+	    hour[hours] = hours;
+	    payRate[hours] = 10;
 
-	    //Calculate the gross pay
+	    //============= Calculations =============================
 	    //Straight time
-	    if (hours<=20){
-	        grossPay[hour]=hours*payRate;
+	    if (hours < 20) {
+	        grossPay[hours]=hours*payRate[hours];
+	        taxes[hours] = grossPay[hours] * .10;
+	        netPay[hours] = grossPay[hours] - taxes[hours];
+	        displayRate[hours] = 10;
 	    }
 	    //Double Time
-	    if (hours>=20){
-	        grossPay[hour]=hours*payRate+(hours-20)*payRate;
+	    if (hours >= 20) {
+	        grossPay[hours] = hours * payRate[hours] + (hours - doubleTime) * (payRate[hours]);
+	        taxes[hours] = grossPay[hours] * .10;
+	        netPay[hours] = grossPay[hours] - taxes[hours];
+	        displayRate[hours] = 20;
 	    }
 	    //Triple Time
-	    if (hours>40){
-	        //payCheck=hours*payRate+(hours-doubleTime)*payRate;
-	        grossPay[hour]+=(hours-40)*payRate;
-
-		//balance=balance*(1+intRate/100);
-		//interest[year]=savings[year-1]*intRate/100
-		//yearDep[year]=deposit;
-		//savings[year]=savings[year-1]+interest[year]+yearDep[year];	
+	    if (hours >= 40) {
+	        grossPay[hours] = hours * payRate[hours] + (hours - doubleTime) * (payRate[hours])
+	        grossPay[hours] += (hours - triTime) * payRate[hours];
+	        taxes[hours] = grossPay[hours] * .10;
+	        netPay[hours] = grossPay[hours] - taxes[hours];
+	        displayRate[hours] = 30;
+	    }
 	}
 
 </script>
 <table width="200" border="1">
   <tr>
     <th>Hour</th>
+    <th>Pay Rate $/Hour</th>
     <th>Gross Pay $</th>
-    <th>Pay Rate $</th>
     <th>Taxes at 10%</th>
     <th>Net Pay</th>
   </tr>
 <script type="text/javascript">
 	//Display the table
-	for(var hours=1;hours<=72;++hours){
+	for(var hours=0;hours<=72;++hours){
 		str+="<tr>";
-		str+=("<td>"+hour[hours].toFixed(2)+"</td>");
-		str+=("<td>"+grossPay[hours].toFixed(2)+"</td>");
-		str+=("<td>"+payRate[hours].toFixed(2)+"</td>");
-		str+=("<td>"+taxes[hours].toFixed(2)+"</td>");
+		str += ("<td>" + hour[hours] + "</td>");
+		str += ("<td>" + displayRate[hours].toFixed(2) + "</td>");
+		str += ("<td>" + grossPay[hours].toFixed(2) + "</td>");
+		str+=("<td>-"+taxes[hours].toFixed(2)+"</td>");
 		str+=("<td>"+netPay[hours].toFixed(2)+"</td>");
 		str+="</tr>";
 	}
