@@ -1,0 +1,96 @@
+﻿<script type="text/javascript">
+	/*
+		Brendon Quaintnace
+		Sept 29, 2014
+		Purpose:  Create a Paycheck Table with 2D array
+	*/
+</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Paycheck Table</title>
+</head>
+
+<body>
+
+<h1>Paycheck Table with 2D Array</h1>
+<h2>by Brendon Quaintance</h2>
+<script type="text/javascript">
+	//Setup the Paycheck table
+    var taxRate = .10;//unit = percentage tax per dollar
+    var payRate = 10;
+    var doubleTime = 20;
+    var triTime = 40;
+    var str = "";
+
+    //Declare the table
+    var payTable = [];
+    var cols = 6;
+    for (var col = 0; col < cols; col++) {
+        payTable[col] = [];
+    }
+
+	//Initialize the first element
+	payTable[0][0] = 0;//Hours column
+	payTable[1][0] = 0;//Display Pay rate
+	payTable[2][0] = 0;//Gross pay column
+	payTable[3][0] = 0;//taxes column
+	payTable[4][0] = 0;//Net pay column
+	payTable[5][0] = 0;//Pay rate column
+
+	//Populate the arrays
+	for (var hours = 0; hours <= 72; ++hours) {
+        //Initializing hours and taxes
+	    payTable[0][hours] = hours;
+	    payTable[5][hours] = 10;
+
+	    //============= Calculations =============================
+	    //Straight time
+	    if (hours < 20) {
+	        payTable[2][hours] = hours * payTable[5][hours];
+	        payTable[3][hours] = payTable[2][hours] * .10;
+	        payTable[4][hours] = payTable[2][hours] - payTable[3][hours];
+	        payTable[1][hours] = 10;
+	    }
+	    //Double Time
+	    if (hours >= 20) {
+	        payTable[2][hours] = hours * payTable[5][hours] + (hours - doubleTime) * (payTable[5][hours]);
+	        payTable[3][hours] = payTable[2][hours] * .10;
+	        payTable[4][hours] = payTable[2][hours] - payTable[3][hours];
+	        payTable[1][hours] = 20;
+	    }
+	    //Triple Time
+	    if (hours >= 40) {
+	        payTable[2][hours] = hours * payTable[5][hours] + (hours - doubleTime) * (payTable[5][hours])
+	        payTable[2][hours] += (hours - triTime) * payTable[5][hours];
+	        payTable[3][hours] = payTable[2][hours] * .10;
+	        payTable[4][hours] = payTable[2][hours] - payTable[3][hours];
+	        payTable[1][hours] = 30;
+	    }
+	}
+
+</script>
+<table width="200" border="1">
+  <tr>
+    <th>Hour</th>
+    <th>Pay Rate $/Hour</th>
+    <th>Gross Pay $</th>
+    <th>Taxes at 10%</th>
+    <th>Net Pay</th>
+  </tr>
+<script type="text/javascript">
+	//Display the table
+    for(var hours=0;hours<=72;++hours){
+        str+="<tr>";
+        str += ("<td>" + payTable[0][hours] + "</td>");
+        for (var col = 1; col < cols - 1; col++) {
+                str += ("<td>" + payTable[col][hours].toFixed(2) + "</td>");
+            }
+        
+        str += "</tr>";
+    }
+	document.write(str);
+</script>
+</table>
+</body>
