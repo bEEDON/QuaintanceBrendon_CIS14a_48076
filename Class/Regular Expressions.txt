@@ -1,0 +1,12 @@
+Vin number: 78asdfghnbmv3345a
+^\s*[A-Ha-hJ-Nj-nPpR-Zr-z0-9]{17}\s*$ 
+
+
+create file name with a . and 3 letter accronym
+^\s*[A-Za-z0-9]{1,}[\.]{1}[A-Za-z]{2,4}\s*$
+
+
+create a picture file with ending accronym of "tif,gif,png,or jpg"
+^\s*[A-Za-z0-9\s]{1,}[.]{1}(tif|gif|png|jpg){1}\s*$
+
+
