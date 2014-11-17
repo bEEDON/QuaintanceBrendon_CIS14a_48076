@@ -1,0 +1,53 @@
+﻿<script type="text/javascript">
+    /*
+		Author: Brendon Quaitnance
+		Date: 
+		Purpose:  
+	*/
+</script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Show/Hide Things</title>
+    <script type="text/javascript">
+    function login(){
+        var login = document.getElementById("login");
+        var logout = document.getElementById("logout");
+        var button = document.getElementById("li");
+        var button2 = document.getElementById("lo");
+        login.style.display = "block";
+        logout.style.display = "none";
+        login.innerHTML = ("Logged In!");
+        li.style.display="none";
+        lo.style.display = "block";
+    }
+    function logout() {
+        var login = document.getElementById("login");
+        var logout = document.getElementById("logout");
+        var button = document.getElementById("li");
+        var button2 = document.getElementById("lo");
+        login.style.display = "none";
+        logout.style.display = "block";
+        logout.innerHTML = ("Logged Out!");
+        lo.style.display = "none";
+        li.style.display = "block";
+    }
+    </script>
+</head>
+
+<body>
+    <div id="login" style="display:block">
+
+    </div>
+
+    <div id ="logout" style="display:none">
+
+    </div>
+
+    <button id="li" onclick="login()">Log In</button>
+    <button id="lo" onclick="logout()" style="display:none">Log Out</button>
+
+</body>
+</html>

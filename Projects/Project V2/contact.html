@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+   <!--
+      Website  
+      Author: Brendon Quaintance
+      Date:   09/15/14
+   -->
+
+      <meta charset="UTF-8" />
+      <title>Home</title>
+      <link href="bio.css" rel="stylesheet" type="text/css" />
+      </head>
+        
+    <body bgcolor="#000000" font color="white">
+         <img src="pics\header.png">
+
+         <nav>
+        	<ul>
+            	<li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="packages.html">DJ Packages</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="sign-up.html">Sign Up</a></li>
+                <li><a href="login.html">Log in</a></li>  
+             </ul>
+         </nav>
+        
+        
+        <form name="service form" id="reg" action="mailto:djservices@beedon.comm"
+             method="post">
+        <!-- e-mail address of the recipient -->
+        <p><input type="hidden" name="email" id="email" value=" djservices@beedon.com " /></p>
+        <table border="0" cellspacing="0" cellpadding="5" width="620">
+
+        <section align ="left">
+<!-- Contact -->
+            <h1><font color="white">Contact:</h1>
+            <p1>Name: bEEDON DJ Services</p1><br />
+            Phone Number: (909)123-4567<br />
+            Email: <a href="mailto:djservices@beedon.com">djservices@beedon.com</a></p1>
+
+<!-- Service Form -->
+            <h1><font color="white">Service Form:</h1>
+
+
+        <tr>   
+           <td valign="top" colspan="2">
+
+           <table>
+           <tr>
+              <td width="100"><label for="fname"><font  color="white">First Name</label></td>
+              <td><input type="text" name="fname" id="fname" size="25" />
+                  <label for="lname"><font  color="white">Last Name</font></label>
+                  <input type="text" name="lname" id="lname" size="25" />
+              </td>
+           </tr>
+           <tr>
+              <td><label for="address1"><font  color="white">Email</label></td>
+              <td><input type="text" name="address1" id="Text1" size="69" /></td>
+           </tr>
+           <tr>
+              <td><label for="address1"><font  color="white">Address</label></td>
+              <td><input type="text" name="address1" id="address1" size="69" /></td>
+           </tr>
+
+           <tr>
+              <td><label for="city"><font  color="white">City</label></td>
+              <td><input type="text" name="city" id="city" size="32" />
+                  <label for="state"><font  color="white">&nbsp;State</label>
+                  <input type="text" name="state" id="state" size="3" />
+                  <label for="zip"><font  color="white">ZIP</label>
+                  <input type="text" name="zip" id="zip" size="10" maxlength="10" />
+              </td>
+           </tr>
+           <tr>
+              <td><label for="country"><font  color="white">Country</label></td>
+              <td><input type="text" name="country" id="country" size="32" value="United States" /></td>  
+           </tr>
+           </table>
+
+           </td>
+        </tr>
+
+<tr>
+   <td colspan="2">
+      <hr style="color: rgb(133,0,0); background-color: rgb(133,0,0); height: 1" />
+   </td>
+</tr>
+
+
+<!-- Service Type -->
+<tr>
+   <td valign="top" colspan="2">
+
+   <table>
+   <tr>
+      <td width="100" valign="top" rowspan="2">
+      <label for="item"><font  color="white">Package</label>
+      </td>
+      <td valign="top" rowspan="2">
+
+      <select name="item" id="item">
+         <option>Standard</option>
+         <option>Let's Rage</option>
+         <option>Turn Down for What</option>
+      </optgroup>
+      </select>
+      </td>
+
+
+             <td valign="top" align="right">
+      <label for="date"><font  color="white">&nbsp&nbsp;Event Date</label>
+      </td>
+      <td valign="top">
+      <input type="text" name="date" id="date" size="30" >
+      </td>
+  
+
+
+   </table>
+
+       <table>
+   <td valign="top" colspan="2" >
+      <tr>
+      <td valign="top" width="200">
+      <fieldset>
+      <legend><font  color="white">Event Type</legend>
+      <input type="radio" name="use" id="home" value="house" />
+      <label for="house"><font  color="white">House Party</label><br />
+      <input type="radio" name="use" id="wedding" value="wedding" checked="checked" />
+      <label for="wedding"><font  color="white">Wedding</label><br />
+      <input type="radio" name="use" id="other" value="other" />
+      <label for="otherr"><font  color="white">Other</label><br />
+      </fieldset>
+      </td>
+
+
+
+      <td valign="top">
+      <label for="date"><font  color="white">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          Event City&nbsp</label>
+
+      <input type="text" name="city" id="Text2" size="30" >
+      </td>
+  
+
+   </tr>
+       <tr>
+   <td colspan="2">
+      <hr style="color: rgb(133,0,0); background-color: rgb(133,0,0); height: 1" />
+   </td>
+</tr>
+       <!-- Comments -->
+<tr>
+   <td valign="top" colspan="2">
+
+   <table><tr>
+      <td width="100" valign="top">
+      <label for="comments"><font  color="white">Requests/Questions?</label>
+      </td>
+      <td valign="top">
+      <textarea name="comments" id="comments" rows="6" cols="50"></textarea>
+      </td>
+   </tr></table>
+
+   </td>
+</tr>
+
+<tr>
+   <td colspan="2">
+      <hr style="color: rgb(133,0,0); background-color: rgb(133,0,0); height: 1" />
+   </td>
+</tr>
+<!-- Buttons -->
+<tr>
+   <td valign="top" colspan="2" align="center">
+   <input type="submit" value="Send" />
+   <input type="reset" value="Cancel" />
+   </td>
+</tr>
+
+       </table>
+
+   </td>
+
+
+
+        </section>
+
+        <h3><font color="white">Follow bEEDON:</h3>
+        <h3>
+            <a href = "http://facebook.com/djbeedon" target ="new">
+                <img src="pics\facebook.png"></a>
+            <a href = "http://youtube.com/officialbeedon" target ="new">
+                <img src="pics\youtube.png"></a>
+            </a>
+            <a href = "https://twitter.com/beedonofficial" target ="new">
+                <img src="pics\twitter.png"></a>
+            </a>
+            <br />
+            <a href = "http://djbeedon.com" target ="new">
+                <img src="pics\website.png"></a>
+            <a href = "https://itunes.apple.com/us/podcast/id880278587" target ="new">
+                <img src="pics\itunes.png"></a>
+            </a>
+
+        </h3>
+</body>
+
+</html>

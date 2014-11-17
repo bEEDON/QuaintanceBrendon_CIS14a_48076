@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>untitled</title>
+		<meta charset="utf-8">
+		<script src=""></script>
+		<script>
+		    function makeButton() {
+		        var btn = document.createElement("button");
+		        var t = document.createTextNode("CLICK ME");
+		        btn.appendChild(t);
+		        document.body.appendChild(btn);
+		    }
+		</script>
+	</head>
+	<body>
+        <div id="name"></div>
+		<script>
+		    makeButton();
+
+		    var x =document.getElementById("name");
+		    x.innerHTML = ("<img src='http://i.telegraph.co.uk/multimedia/archive/01914/MW3_1914863b.jpg'>");
+		    var d = document.createElement("DIV");
+		    document.body.appendChild(d);
+
+		    var t = document.getElementsByTageName("DIV");
+		    
+		    
+		</script>
+        
+	</body>
+</html>

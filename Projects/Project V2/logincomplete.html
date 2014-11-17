@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Log In Complete</title>
+       <script type="text/javascript" 
+           src="login.js" >//Get Function
+       </script>
+      <link href="bio.css" rel="stylesheet" type="text/css" />
+</head>
+
+    <body bgcolor="#000000" font color="white">
+        <img src="pics\header.png">
+        <!--<h1 align="center"><img src="C:\Users\bEEDON\Documents\1. SCHOOL\CIS\CIS - 72A\Hw 3\bio.png"></h1>-->
+
+         <nav>
+        	<ul>
+            	<li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="packages.html">DJ Packages</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="sign-up.html">Sign Up</a></li>
+                <li><a href="login.html">Log in</a></li>  
+             </ul>
+         </nav>
+        
+        <section>
+       <h2><font color="white">Log In:</font></h2><br />
+       
+       <section align="center">
+
+     <script type="text/javascript">
+
+         //Grab the URL
+         document.write('<FONT COLOR="white">');
+
+         
+
+         document.write("Display the URL </br>");
+         document.write(location.href + "</br>");
+         //Place into the $_GET object
+         var $_GET = getFormInfo(location.href);
+         //Print the $_GET object
+         document.write("</br>Display the $_GET Object </br>");
+         for (var name in $_GET) {
+             document.write(name + "=" + $_GET[name] + "<br/>");
+         }
+
+         var SUuser = $_GET["user"];
+         document.write("<h1>Welcome " + SUuser + "!</h1>");
+
+
+         var str = JSON.stringify($_GET);
+         document.write("</br> Display the JSON String </br>");
+         document.write("The $_GET Object in a string = " + str + "</br>");
+         var obj = JSON.parse(str);
+         //Print the new object
+         document.write("</br> Display the JSON Object </br>");
+         for (var name in obj) {
+             document.write(name + "=" + obj[name] + "<br/>");
+         }
+         //Testing Local Storage
+         var ssObj = sessionStorage;
+         document.write("</br> Display all the session storage before setting </br>");
+         for (var name in ssObj) {
+             document.write(name + "=" + ssObj[name] + "<br/>");
+         }
+         //Set a property in session storage
+         //With the api
+         ssObj.setItem("WithAnAPI", str);
+         document.write("</br> Display all the session storage after setting </br>");
+         for (var name in ssObj) {
+             document.write(name + "=" + ssObj[name] + "<br/>");
+         }
+
+	</script>            
+
+        </section>
+            </section>
+
+        <h3><font color="white">Follow bEEDON:</h3>
+        <h3>
+            <a href = "http://facebook.com/djbeedon" target ="new">
+                <img src="pics\facebook.png"></a>
+            <a href = "http://youtube.com/officialbeedon" target ="new">
+                <img src="pics\youtube.png"></a>
+            </a>
+            <a href = "https://twitter.com/beedonofficial" target ="new">
+                <img src="pics\twitter.png"></a>
+            </a>
+            <br />
+            <a href = "http://djbeedon.com" target ="new">
+                <img src="pics\website.png"></a>
+            <a href = "https://itunes.apple.com/us/podcast/id880278587" target ="new">
+                <img src="pics\itunes.png"></a>
+            </a>
+
+        </h3>
+
+
+</body>
+</html>
+<!doctype html>

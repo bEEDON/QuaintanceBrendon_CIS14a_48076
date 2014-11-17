@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+   <!--
+      Website  
+      Author: Brendon Quaintance
+      Date:   09/15/14
+   -->
+
+      <meta charset="UTF-8" />
+      <title>Sign Up</title>
+      <link href="bio.css" rel="stylesheet" type="text/css" />
+<script>
+
+    //Email Address
+    function validate_email() {
+        var Arr = document.forms["input"]["email"].value.match(/^\s*[A-Za-z0-9!@#$%^&*()_+-=]+[@][A-Za-z0-9!@#$%^&*()_+-=]+[.][A-Za-z]{3}\s*$/);
+        if (Arr != null) {
+            return true;
+        } else {
+            alert("Invalid Email");
+            return false;
+        }
+    }
+
+    //User name
+    function validate_user() {
+        var Arr = document.forms["input"]["user"].value.match(/^[A-Za-z0-9]+$/g);
+        if (Arr != null) {
+
+            return true;
+        } else {
+            alert("Invalid Username");
+            return false;
+        }
+
+    }
+
+    //Password
+    function validate_password() {
+        var Arr = document.forms["input"]["password"].value.match(/^\s*[A-Za-z0-9!@#$%^&*()_+-=]{0,20}\s*$/);
+        if (Arr != null) {
+            return true;
+        } else {
+            alert("Invalid Password");
+            return false;
+        }
+    }
+    //Verify Password
+    function validate_password2() {
+        var pass1 = document.forms["input"]["password"].value;
+        var pass2 = document.forms["input"]["password2"].value;
+        if (pass1 == pass2) {
+            return true;
+        } else {
+            alert("Your Passwords do not match!");
+            return false;
+        }
+    }
+
+
+    //verify form
+    function validate_Form() {
+        if (!validate_email()) return false;
+        if (!validate_user()) return false;
+        if (!validate_passW()) return false;
+        if (!validate_passW2()) return false;
+        return true;
+    }
+</script>
+</head>
+
+ <body bgcolor="#000000" font color="white">
+        <img src="pics\header.png">
+        <!--<h1 align="center"><img src="C:\Users\bEEDON\Documents\1. SCHOOL\CIS\CIS - 72A\Hw 3\bio.png"></h1>-->
+
+         <nav>
+        	<ul>
+            	<li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="packages.html">DJ Packages</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="sign-up.html">Sign Up</a></li>
+                <li><a href="login.html">Log in</a></li>  
+             </ul>
+         </nav>
+        
+        <section>
+       <h2><font color="white">Sign Up:</font></h2>
+        
+       <section align="center">
+           <fieldset>
+	        <form name="input" action="signupcomplete.html" onsubmit="return validate_Form()" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<font color = "white">Email Adress: <input name="email" type="text" size="30"/><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   
+                <font color = "white">Username: <input name="user" type="text" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
+				<font color = "white">Password: <input name="password" type="password" size="30"/><br>&nbsp&nbsp
+                <font color = "white">Verify Password: <input name="password2" type="password" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<input id="signcomplete" type="submit" value="Sign Up"/>
+                    </fieldset>
+			</form>
+        </section>
+        </section>
+        <h3><font color="white">Follow bEEDON:</h3>
+        <h3>
+            <a href = "http://facebook.com/djbeedon" target ="new">
+                <img src="pics\facebook.png"></a>
+            <a href = "http://youtube.com/officialbeedon" target ="new">
+                <img src="pics\youtube.png"></a>
+            </a>
+            <a href = "https://twitter.com/beedonofficial" target ="new">
+                <img src="pics\twitter.png"></a>
+            </a>
+            <br />
+            <a href = "http://djbeedon.com" target ="new">
+                <img src="pics\website.png"></a>
+            <a href = "https://itunes.apple.com/us/podcast/id880278587" target ="new">
+                <img src="pics\itunes.png"></a>
+            </a>
+
+        </h3>
+</body>
+</html>
+<!doctype html>

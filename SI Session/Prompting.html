@@ -1,0 +1,66 @@
+﻿<script type="text/javascript">
+	/*
+		Author: Brendon Quaitnance
+		Date: 
+		Purpose:  
+	*/
+</script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+        function Divide(numerator, denominator) {
+            if (denominator == 0) {
+                return "Cannot Divide by 0";
+            }
+            else {
+                return (numerator / denominator);
+                        
+            }
+        }
+
+        function Power(base, power) {
+            if (base == 0) {
+                return 0;
+
+            }
+            else {
+                return Math.pow(base, power);
+            }
+        }
+
+        function Square(root) {
+            var answer3;
+            if (root < 0) {
+                return "i";
+            }
+            else {
+                return Math.sqrt(root);
+            }
+        }
+    </script>
+<title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var numerator = prompt("Enter in Numerator");
+        var denominator = prompt("Enter in denominator");
+        var base = prompt("Enter in Base");
+        var power = prompt("Enter in Power");
+        var root = prompt("Enter in Root");
+        
+        numerator = parseFloat(numerator);
+        denominator = parseFloat(denominator);
+        power = parseFloat(power);
+        base = parseFloat(base);
+        root = parseFloat(root);
+
+        doucment.write("<h1>" + numerator + " / " + denominator + " = " + Divide(numerator, denominator) + "</h1>");
+        doucment.write("<h1>" + base + " raise to the " + power + " = " + Power(base, power) + "</h1>");
+        doucment.write("<h1>The square root of " + root + " = " + Square(root) + "</h1>");
+    </script>
+</body>
+</html>

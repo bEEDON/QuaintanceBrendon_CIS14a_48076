@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+        <script>
+            function validate_firstName() {
+                var X = document.forms["input"]["firstName"].value;
+                var re = new RegExp(/^ [A-Za-z]+[a-z]+ $/);
+                var match = re.exec(X);
+                if (match == null) {
+                    alert("Please Enter Your First Name");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+ /*           function validate_lastName() {
+                var X = document.forms["input"]["lastName"].value;
+                var re = new RegExp(/^ [A-Za-z]+[a-z]+ $/);
+                var match = re.exec(X);
+                if (match == null) {
+                    alert("Please Enter Your Last Name");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            function validate_birthDate() {
+                var X = document.forms["input"]["birthDate"].value;
+                var re = new RegExp(/^ [0-9]{2}[/][0-9]{2}[/][0-9]{2} $/);
+                var match = re.exec(X);
+                if (match == null) {
+                    alert("Please Enter Your Birthdate");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            function validate_email() {
+                var X = document.forms["input"]["email"].value;
+                var re = new RegExp(/^ [A-Za-z0-9_]+[@][A-Za-z0-9]+[.][A-Za-z]{3} $/);
+                var match = re.exec(X);
+                if (match == null) {
+                    alert("Please Enter Your Email");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            function validate_password() {
+                var X = document.forms["input"]["password"].value;
+                var re = new RegExp(/^ [A-Za-z0-9!@#$%^&*()_]{5,20} $/);
+                var match = re.exec(X);
+                if (match == null) {
+                    alert("Please Enter Your Password");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+*/
+            function validate_Form() {
+                if (!validate_firstName()) return false;
+               /* if (!validate_lastName()) return false;
+                if (!validate_birthDate()) return false;
+                if (!validate_email()) return false;
+                if (!validate_password()) return false;*/
+                return true;
+            }
+    </script>
+</head>
+<body>
+    <form name="input" action="page.html" onsubmit="return validate_Form()" method="get">
+        <input name="firstName" type="text" />First Name<br />
+        <input name="lastName" type="text" />Last Name<br />
+        <input name="birthDate" type="text" />Birth Date (MM/DD/YY)<br />
+        <input name="email" type="text" />Email<br />
+        <input name="password" type="password" />Password (5 Min/10 Max characters)<br />
+    </form>
+    <input value="submit" type="submit" />
+
+
+
+    
+</body>
+</html>

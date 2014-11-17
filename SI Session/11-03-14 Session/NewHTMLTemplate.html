@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>untitled</title>
+		<meta charset="utf-8">
+		<script src=""></script>
+        <input type="text" id="fName" name="fName"/>First Name<br />
+        <input type="text" id="lName" name="lName"/>Last Name<br />
+        <input type="text" id="eMail" name="eMail"/>Email<br />
+        <input type="text" id="passW" name="passW"/>Password<br />
+        <input type="text" id="vPass" name="vPass"/>Verify Password<br />
+
+	</head>
+	<body>
+	<script>
+	    //	For multiple fields, name the function accordingly.
+	    function validate_fName() {
+	        var arr = document.forms["form_name"]["fName"].value.match(/^\s*[A-Za-z]+[a-z]+\s*$/);
+	        if (arr != null) {
+	            //	STEP 7 CHALLENGE: PLACE CODE HERE
+	            return true;
+	        } else {
+	            alert("PLEASE, ENTER A VALID FIRST NAME!");	//	Change alert message to reflect expected input.
+	            //	STEP 7 CHALLENGE: PLACE CODE HERE
+	            return false;
+	        }
+	    }
+	    function validate_lName() {
+	        var arr = document.forms["form_name"]["lName"].value.match(/^\s*[A-Za-z]*[a-z]\s*$/);
+	        if (arr != null) {
+	            //	STEP 7 CHALLENGE: PLACE CODE HERE
+	            return true;
+	        } else {
+	            alert("PLEASE, ENTER A VALID LAST NAME!");	//	Change alert message to reflect expected input.
+	            //	STEP 7 CHALLENGE: PLACE CODE HERE
+	            return false;
+	        }
+	    }
+	    function validate_eMail() {
+	        var arr = document.forms["form_name"]["eMail"].value.match(/^\s*[A-Za-z0-9!@#$%^&*()_+-=][@]*[A-Za-z0-9!@#$%^&*()_+-=][.][A-Za-z]{3}\s*$/);
+	        if (arr != null) {
+	            //	STEP 7 CHALLENGE: PLACE CODE HERE
+	            return true;
+	        } else {
+	            alert("PLEASE, ENTER A VALID EMAIL!");	//	Change alert message to reflect expected input.
+	            //	STEP 7 CHALLENGE: PLACE CODE HERE
+	            return false;
+	        }
+	    }
+	    function validate_passW() {
+	        var arr = document.forms["form_name"]["passW"].value.match(/^\s*[A-Za-z0-9!@#$%^&*()_+-=]{6,20}\s*$/);
+	        if (arr != null) {
+	            //	STEP 7 CHALLENGE: PLACE CODE HERE
+	            return true;
+	        } else {
+	            alert("PLEASE, ENTER A VALID PASSWORD!");	//	Change alert message to reflect expected input.
+	            //	STEP 7 CHALLENGE: PLACE CODE HERE
+	            return false;
+	        }
+	    }
+
+	    function validate_form() {
+	        if (!validate_fName()) return false;
+	        if (!validate_lName()) return false;
+	        if (!validate_eMail()) return false;
+	        if (!validate_passW()) return false;
+
+	        /* Add new line for each field validation, be sure the function names are correct. */
+	        return true;
+	    }
+    </script>
+	</body>
+</html>
+
+
+<!-- Related Form Example/Template -->
+<form name="form_name" id="form_name" action="form.html" onsubmit="return validate_form()" method="get">
+	<fieldset>
+		<legend>Member Information</legend>
+		<label>Field Label
+			<input type="text" name="input_name" id="input_name_id" />
+		</label><br>
+	</fieldset>
+	<div>
+		<input type="submit" value="Register" />
+		<input type="reset" value="Cancel" />	<!-- restores default values -->
+	</div>
+</form>
