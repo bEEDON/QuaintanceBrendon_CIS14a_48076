@@ -2,38 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Sign Up Complete</title>
+<title>Log In Complete</title>
        <script type="text/javascript" 
-           src="sign-up.js" >//Get Function
+           src="login.js" >//Get Function
        </script>
       <link href="bio.css" rel="stylesheet" type="text/css" />
-    <script>
-
-        //Email Address
-        function validate_account(SUuser,SUpass) {
-            var user = document.forms["input"]["user"].value;
-            var pass = document.forms["input"]["password"].value;
-
-
-            var user2 = document.forms["login"]["user1"].value;
-            var pass2 = document.forms["login"]["password1"].value;
-
-            document.write(user);
-            document.write(password);
-
-            if ((SUuser===user2)&&(SUpass===pass2)) {
-                return true;
-            } else {
-                alert("Invalid Username or Password!");
-                return false;
-            }
-        }
-        //verify form
-        function validate_Form() {
-            if (!validate_account()) return false;
-            return true;
-        }
-    </script>
 </head>
 
     <body bgcolor="#000000" font color="white">
@@ -52,47 +25,36 @@
              </ul>
          </nav>
         
-       <section>
-       <h2><font color="white">Sign Up Complete:</font></h2>
+        <section>
+       <h2><font color="white">Log In:</font></h2><br />
+       
+       <section align="center">
 
      <script type="text/javascript">
 
          //Grab the URL
          document.write('<FONT COLOR="white">');
-         //document.write("Display the URL </br>");
-         //document.write(location.href + "</br>");
+
+         
+
+         document.write("Display the URL </br>");
+         document.write(location.href + "</br>");
          //Place into the $_GET object
          var $_GET = getFormInfo(location.href);
          //Print the $_GET object
-         //document.write("</br>Display the $_GET Object </br>");
-         //for (var name in $_GET) {
-             //document.write(name + "=" + $_GET[name] + "<br/>");
-         //}
-
+         document.write("</br>Display the $_GET Object </br>");
+         for (var name in $_GET) {
+             document.write(name + "=" + $_GET[name] + "<br/>");
+         }
 
          var SUuser = $_GET["user"];
-         document.write("<p1>Thank you for signing up <strong>" + SUuser + "</strong>! Please Log In Below:</p1>");
-         var SUpass = $_GET["password"];
-         
-         </script>
+         document.write("<h1>Welcome " + SUuser + "!</h1>");
 
-         <section align="center"><br />
-        <fieldset>
-            <form name="login" action="index.html" onsubmit="return validate_Form(SUuser,SUpass)" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <font color = "white">Username: <input name="user1" type="text" size="30"/><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
-            <font color = "white">Password: <input name="password1" type="password" size="30"/><br><br />&nbsp&nbsp
-            <input id="signcomplete" type="submit" value="Log in"/>
-            </fieldset>
-            </form>
-        </section>
-        </section>
 
-        <script>
-         /*
          var str = JSON.stringify($_GET);
          document.write("</br> Display the JSON String </br>");
          document.write("The $_GET Object in a string = " + str + "</br>");
-         var signUp = JSON.parse(str);
+         var obj = JSON.parse(str);
          //Print the new object
          document.write("</br> Display the JSON Object </br>");
          for (var name in obj) {
@@ -110,11 +72,12 @@
          document.write("</br> Display all the session storage after setting </br>");
          for (var name in ssObj) {
              document.write(name + "=" + ssObj[name] + "<br/>");
-         }*/
+         }
 
-	    </script>            
+	</script>            
 
-
+        </section>
+            </section>
 
         <h3><font color="white">Follow bEEDON:</h3>
         <h3>
