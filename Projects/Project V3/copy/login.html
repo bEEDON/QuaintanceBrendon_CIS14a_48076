@@ -2,39 +2,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Sign Up Complete</title>
+<title>Login</title>
        <script type="text/javascript" 
            src="sign-up.js" >//Get Function
        </script>
       <link href="bio.css" rel="stylesheet" type="text/css" />
     <script>
 
-        //Email Address
-        function validate_account(SUuser, SUpass) {
-            /*
-            var user = document.forms["input"]["user"].value;
-            var pass = document.forms["input"]["password"].value;
-
-
-            var user2 = document.forms["login"]["user1"].value;
-            var pass2 = document.forms["login"]["password1"].value;
+    //Email Address
+        function validate_account() {
+            
+            var $_GET = getFormInfo(location.href);
+            alert("test");
 
             var SUuser = $_GET["user"];
-            document.write("<p1>Thank you for signing up <strong>" + SUuser + "</strong>! Please Log In Below:</p1>");
-            var SUpass = $_GET["password"];
+            var SUpass = $_GET["pass"];
+            
+           
 
-            document.write(user);
-            document.write(password);
-            */
-            var user = $_GET["user"];
-            var pass = $_GET["password"];
+            var user = document.forms["login"]["user2"].value;
+            var pass = document.forms["login"]["password2"].value;
 
-            if ((SUuser==user)&&(SUpass==password)) {
+            
+            if ((SUuser==user)&&(SUpass==pass)) {
                 return true;
             } else {
                 alert("Invalid Username or Password!");
-                document.write(user);
-                document.write(password);
                 return false;
             }
         }
@@ -42,6 +35,10 @@
         function validate_Form() {
             if (!validate_account()) return false;
             return true;
+        }
+
+        function test() {
+            alert("Test");
         }
     </script>
 </head>
@@ -63,34 +60,26 @@
          </nav>
         
        <section>
-       <h2><font color="white">Sign Up Complete:</font></h2>
+       <h2><font color="white">Login:</font></h2>
 
      <script type="text/javascript">
 
          //Grab the URL
          document.write('<FONT COLOR="white">');
-         //document.write("Display the URL </br>");
-         //document.write(location.href + "</br>");
-         //Place into the $_GET object
-         var $_GET = getFormInfo(location.href);
-         //Print the $_GET object
-         //document.write("</br>Display the $_GET Object </br>");
-         //for (var name in $_GET) {
-             //document.write(name + "=" + $_GET[name] + "<br/>");
-         //}
 
-
+         var $_GET = getFormInfo(location.href)
          var SUuser = $_GET["user"];
+
          document.write("<p1>Thank you for signing up <strong>" + SUuser + "</strong>! Please Log In Below:</p1>");
-         var SUpass = $_GET["password"];
+         
          
          </script>
 
          <section align="center"><br />
         <fieldset>
-            <form name="login" action="signupcomplete" onsubmit="return validate_Form(SUuser,SUpass)" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <font color = "white">Username: <input name="user" type="text" size="30"/><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
-            <font color = "white">Password: <input name="password" type="password" size="30"/><br><br />&nbsp&nbsp
+            <form name="login" action="index.html" onsubmit="return validate_Form()" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <font color = "white">Username: <input name="user2" type="text" size="30"/><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
+            <font color = "white">Password: <input name="password2" type="password" size="30"/><br><br />&nbsp&nbsp
             <input id="signcomplete" type="submit" value="Log in"/>
             </fieldset>
             </form>

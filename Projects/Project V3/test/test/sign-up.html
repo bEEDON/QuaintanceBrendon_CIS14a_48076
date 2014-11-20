@@ -60,8 +60,8 @@
 
     //verify form
     function validate_Form() {
-        //if (!validate_email()) return false;
-       // if (!validate_user()) return false;
+        if (!validate_email()) return false;
+        if (!validate_user()) return false;
         if (!validate_password()) return false;
         if (!validate_password2()) return false;
         return true;

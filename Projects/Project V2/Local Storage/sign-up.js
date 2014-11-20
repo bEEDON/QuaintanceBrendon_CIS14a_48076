@@ -9,7 +9,7 @@
 		var nameValuePairs=info[1].split("&");
 		//Map the information to the Get Object
 		var obj=new Object();
-		for(var i=0;i<nameValuePairs.length;i++){
+		for(var i=0;i<nameValuePairs.length-1;i++){
 			var map=nameValuePairs[i].split("=");
 			var name=map[0];
 			var value=map[1];

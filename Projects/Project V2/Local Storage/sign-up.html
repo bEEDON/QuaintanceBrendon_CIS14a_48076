@@ -27,6 +27,7 @@
     function validate_user() {
         var Arr = document.forms["input"]["user"].value.match(/^[A-Za-z0-9]+$/g);
         if (Arr != null) {
+
             return true;
         } else {
             alert("Invalid Username");
@@ -37,7 +38,7 @@
 
     //Password
     function validate_password() {
-        var Arr = document.forms["input"]["pass"].value.match(/^\s*[A-Za-z0-9!@#$%^&*()_+-=]+\s*$/);
+        var Arr = document.forms["input"]["password"].value.match(/^\s*[A-Za-z0-9!@#$%^&*()_+-=]{0,20}\s*$/);
         if (Arr != null) {
             return true;
         } else {
@@ -47,8 +48,8 @@
     }
     //Verify Password
     function validate_password2() {
-        var pass1 = document.forms["input"]["pass"].value;
-        var pass2 = document.forms["input"]["pass2"].value;
+        var pass1 = document.forms["input"]["password"].value;
+        var pass2 = document.forms["input"]["password2"].value;
         if (pass1 == pass2) {
             return true;
         } else {
@@ -60,10 +61,10 @@
 
     //verify form
     function validate_Form() {
-        //if (!validate_email()) return false;
-       // if (!validate_user()) return false;
-        if (!validate_password()) return false;
-        if (!validate_password2()) return false;
+        if (!validate_email()) return false;
+        if (!validate_user()) return false;
+        if (!validate_passW()) return false;
+        if (!validate_passW2()) return false;
         return true;
     }
 </script>
@@ -90,11 +91,11 @@
         
        <section align="center">
            <fieldset>
-	        <form name="input" action="login.html" onsubmit="return validate_Form()" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	        <form name="input" action="signupcomplete.html" onsubmit="return validate_Form()" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<font color = "white">Email Adress: <input name="email" type="text" size="30"/><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   
                 <font color = "white">Username: <input name="user" type="text" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
-				<font color = "white">Password: <input name="pass" type="password" size="30"/><br>&nbsp&nbsp
-                <font color = "white">Verify Password: <input name="pass2" type="password" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<font color = "white">Password: <input name="password" type="password" size="30"/><br>&nbsp&nbsp
+                <font color = "white">Verify Password: <input name="password2" type="password" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<input id="signcomplete" type="submit" value="Sign Up"/>
                     </fieldset>
 			</form>

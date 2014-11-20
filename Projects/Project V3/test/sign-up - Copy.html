@@ -56,14 +56,41 @@
             return false;
         }
     }
+    function WriteCookie() {
 
+        cookievalue1 = escape(document.myform.Email.value) + ";";
+        document.cookie = "Email=" + cookievalue1;
+
+        cookievalue2 = escape(document.myform.Username.value) + ";";
+        document.cookie = "Username=" + cookievalue2;
+
+        cookievalue3 = escape(document.myform.Password.value) + ";";
+        document.cookie = "Password=" + cookievalue3;
+    }
+
+    function ReadCookie() {
+        var allcookies = document.cookie;
+        alert("All Cookies : " + allcookies);
+
+        // Get all the cookies pairs in an array
+        cookiearray = allcookies.split(';');
+
+        // Now take key value pair out of this array
+        for (var i = 0; i < cookiearray.length; i++) {
+            email = cookiearray[i].split('=')[0];
+            user = cookiearray[i].split('=')[1];
+            password = cookiearray[i].split('=')[2];
+            alert("email : " + cookievalue1 + " user: " + cookievalue2 + " Password: " + cookievalue3 + "");
+        }
+    }
 
     //verify form
     function validate_Form() {
-        //if (!validate_email()) return false;
-       // if (!validate_user()) return false;
+        if (!validate_email()) return false;
+        if (!validate_user()) return false;
         if (!validate_password()) return false;
         if (!validate_password2()) return false;
+        WriteCookie();
         return true;
     }
 </script>
@@ -88,18 +115,29 @@
         <section>
        <h2><font color="white">Sign Up:</font></h2>
         
+
+        
+
        <section align="center">
-           <fieldset>
-	        <form name="input" action="login.html" onsubmit="return validate_Form()" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <!--<fieldset>
+	        <form name="myform" action="">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<font color = "white">Email Adress: <input name="email" type="text" size="30"/><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   
                 <font color = "white">Username: <input name="user" type="text" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
 				<font color = "white">Password: <input name="pass" type="password" size="30"/><br>&nbsp&nbsp
                 <font color = "white">Verify Password: <input name="pass2" type="password" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				<input id="signcomplete" type="submit" value="Sign Up"/>
+				<input id="signcomplete" type="submit" value="Sign Up"/>-->
+           <form name="myform" action="">
+                Enter Email: <input type="text" name="Email"/>
+                Enter Username: <input type="text" name="Username"/>
+               Enter Password: <input type="text" name="Password"/>
+                <input type="button" value="Set Cookie" onclick="WriteCookie();"/>
+                    <input type="button" value="Get Cookie" onclick="ReadCookie()"/>
                     </fieldset>
 			</form>
         </section>
         </section>
+
+
         <h3><font color="white">Follow bEEDON:</h3>
         <h3>
             <a href = "http://facebook.com/djbeedon" target ="new">

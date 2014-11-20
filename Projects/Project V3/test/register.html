@@ -1,0 +1,135 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link type="text/css" rel="stylesheet" href="stylesheet.css">
+<link type="text/javascript" href="login.js">
+<link type="text/javascript" href="shopping.js">
+<script>
+    //VALIDATE USERNAME!
+    function validate_Username() {
+        var Arr = document.forms["input"]["username"].value.match(/^[A-Za-z]+$/g);
+        if (Arr != null) {
+
+            return true;
+        } else {
+            alert("Invalid Username Field");
+            return false;
+        }
+
+    }
+
+
+    //VALIDATE EMAIL ADDRESS
+    function validate_Email() {
+        var Arr = document.forms["input"]["email"].value.match(/^[A-Za-z0-9]+[@]([A-Za-z0-9]+[\.]?)+$/);
+        if (Arr != null) {
+            return true;
+        } else {
+            alert("Invalid Email Field");
+            return false;
+        }
+    }
+    //VALIDATE PASSWORD
+    function validate_Password() {
+        var Arr = document.forms["input"]["password"].value.match(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9!$%^&+@#$%]).{4,15})/);
+        if (Arr != null) {
+            return true;
+        } else {
+            alert("Invalid Password Field");
+            return false;
+        }
+    }
+    //VALIDATE PASSWORD2
+    function validate_Password2() {
+        var pass1 = document.forms["input"]["password"].value;
+        var pass2 = document.forms["input"]["password2"].value;
+        if (pass1 == pass2) {
+            return true;
+        } else {
+            alert("Passwords do not match");
+            return false;
+        }
+    }
+
+
+
+    //VALIDATE ENTIRE FORM!
+    //	Function to Get Form Info from URL
+    function getFormInfo(url) {
+        var info = url.split("?");
+        var nameValuePairs = info[1].split("&");
+        var obj = new Object();
+        for (var i = 0; i < nameValuePairs.length - 1; i++) {
+            var map = nameValuePairs[i].split("=");
+            var name = map[0];
+            var value = map[1];
+            obj[name] = value;
+        }
+        return obj;
+    }
+
+
+    //	Cookie Functions: SET and GET
+    function setCookie(name, value, secondsToLive) {
+        var cookie = name + "=" + encodeURIComponent(value);
+        if (typeof daysToLive === "number")
+            cookie += "; max-age=" + (daysToLive);
+        document.cookie = cookie;
+    }
+    function getCookies() {
+        var cookies = {};
+        var all = document.cookie;
+        if (all === "")
+            return cookies;
+        var list = all.split("; ");
+        for (var i = 0; i < list.length; i++) {
+            var cookie = list[i];
+            var p = cookie.indexOf("=");
+            var name = cookie.substring(0, p);
+            var value = cookie.substring(p + 1);
+            value = decodeURIComponent(value);
+            cookies[name] = value;
+        }
+        return cookies;
+    }
+</script>
+</head>
+
+<body id="Register">
+<header>
+		<img src="logo.png" width="134" height="54"/>
+    	<ul class="nav">
+       	  <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li id="ln1"><a href="login.html">Login</a></li>
+            <li id="Li1"><a href="register.html">Register</a></li>
+            <li id="ln"><a href="shoppingcart.html">Shopping Cart</a></li>
+            <li id="Li2"><a href="logout.html">Log Out</a></li>
+            
+		</ul>
+</header>
+
+<div>
+	<p style="font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, sans-serif; font-size:24px; text-align:center;">
+    	Enter information to create an account with Reevo Inc! All of your information is <br>
+        secure and we will TOTALLY not send it to anyone...or sell it...maybe...
+    </p>
+</div>
+
+<div class="regesterdiv">
+	<center><form name="input" action="registercomplete.html" onsubmit="return validate_Form()" method="get" id="loginform">
+				<input name="username" type="text" /><div class="regesterdiv">Enter a Username</div><br>
+                <input name="email" type="text" /><div class="regesterdiv">Enter a valid email adress <br>(email@host.com)<br></div>
+				<input name="password" type="password" /><div class="regesterdiv">Type Your Password<br>Requires at least one number, One lower case, One Uppercase, special Characters optional(!@#$%^&*+) <br> Between 4-15 Characters Long<br></div><br>
+                <input name="password2" type="password" /><div class="regesterdiv">(Retype)Password</div><br>
+				<input id="registerSubmit" type="submit" value="Submit"/><br>
+			</form></center>
+            
+	            
+</div>
+	<img class="registerimg" src="reevoEmptyBackGround.png"/>
+</body>
+</html>

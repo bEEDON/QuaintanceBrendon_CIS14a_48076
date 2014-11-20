@@ -11,61 +11,39 @@
       <title>Sign Up</title>
       <link href="bio.css" rel="stylesheet" type="text/css" />
 <script>
+    
 
-    //Email Address
-    function validate_email() {
-        var Arr = document.forms["input"]["email"].value.match(/^\s*[A-Za-z0-9!@#$%^&*()_+-=]+[@][A-Za-z0-9!@#$%^&*()_+-=]+[.][A-Za-z]{3}\s*$/);
-        if (Arr != null) {
-            return true;
-        } else {
-            alert("Invalid Email");
-            return false;
-        }
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
     }
 
-    //User name
-    function validate_user() {
-        var Arr = document.forms["input"]["user"].value.match(/^[A-Za-z0-9]+$/g);
-        if (Arr != null) {
-            return true;
-        } else {
-            alert("Invalid Username");
-            return false;
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1);
+            if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
         }
-
+        return "";
     }
 
-    //Password
-    function validate_password() {
-        var Arr = document.forms["input"]["pass"].value.match(/^\s*[A-Za-z0-9!@#$%^&*()_+-=]+\s*$/);
-        if (Arr != null) {
-            return true;
+    function checkCookie() {
+        var user = getCookie("username");
+        if (user != "") {
+            alert("Welcome again " + user);
         } else {
-            alert("Invalid Password");
-            return false;
-        }
-    }
-    //Verify Password
-    function validate_password2() {
-        var pass1 = document.forms["input"]["pass"].value;
-        var pass2 = document.forms["input"]["pass2"].value;
-        if (pass1 == pass2) {
-            return true;
-        } else {
-            alert("Your Passwords do not match!");
-            return false;
+            user = prompt("Please enter your name:", "");
+            if (user != "" && user != null) {
+                setCookie("username", user, 365);
+            }
         }
     }
 
 
-    //verify form
-    function validate_Form() {
-        //if (!validate_email()) return false;
-       // if (!validate_user()) return false;
-        if (!validate_password()) return false;
-        if (!validate_password2()) return false;
-        return true;
-    }
 </script>
 </head>
 
@@ -82,24 +60,36 @@
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="sign-up.html">Sign Up</a></li>
                 <li><a href="login.html">Log in</a></li>  
+                <li><a href="sign-up - Copy.html">test in</a></li>  
              </ul>
          </nav>
         
         <section>
        <h2><font color="white">Sign Up:</font></h2>
         
+
+        
+
        <section align="center">
-           <fieldset>
-	        <form name="input" action="login.html" onsubmit="return validate_Form()" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <!--<fieldset>
+	        <form name="myform" action="">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<font color = "white">Email Adress: <input name="email" type="text" size="30"/><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   
                 <font color = "white">Username: <input name="user" type="text" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
 				<font color = "white">Password: <input name="pass" type="password" size="30"/><br>&nbsp&nbsp
                 <font color = "white">Verify Password: <input name="pass2" type="password" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				<input id="signcomplete" type="submit" value="Sign Up"/>
+				<input id="signcomplete" type="submit" value="Sign Up"/>-->
+           <form name="input" action="login.html" method="get" id="loginform">
+                Enter Email: <input type="text" name="Email"/>
+                Enter Username: <input type="text" name="Username"/>
+               Enter Password: <input type="text" name="Password"/>
+                <input id="registerSubmit" type="submit" value="Submit"/><br>
+                    
                     </fieldset>
 			</form>
         </section>
         </section>
+
+
         <h3><font color="white">Follow bEEDON:</h3>
         <h3>
             <a href = "http://facebook.com/djbeedon" target ="new">

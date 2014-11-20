@@ -1,0 +1,45 @@
+﻿<script type="text/javascript">
+	/*
+		Author: Brendon Quaitnance
+		Date: 
+		Purpose:  
+	*/
+</script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+
+    <script>
+        function hide(){
+            document.getElementById("elem1").style.display="none";
+            document.getElementById("hide").style.display = "none";
+            document.getElementById("show").style.display = "inline";
+        }
+        function show(){
+            document.getElementById("elem1").style.display = "inline";
+            document.getElementById("hide").style.display = "inline";
+            document.getElementById("show").style.display = "none"
+        }
+
+    </script>
+</head>
+
+<body>
+    
+    <div id="elem1">YOYOYO</div><br />
+    <ul>
+        <li id="1">hey</li>
+        <li id="2">bye</li>
+    </ul>
+    <form name="login" action="next.html">
+    <input id="signcomplete" type="submit" value="Log in"/>
+
+    </form>
+    <button id= "hide" onclick="hide()">Hide</button>
+    <button id="show" onclick="show()">Show</button>
+    
+</body>
+</html>
