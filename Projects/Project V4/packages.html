@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+   <!--
+      Website  
+      Author: Brendon Quaintance
+      Date:   09/15/14
+   -->
+
+      <meta charset="UTF-8" />
+      <title>DJ Packages</title>
+      <link href="bio.css" rel="stylesheet" type="text/css" />
+              <script type="text/javascript">
+
+                  function setCookie(cname, cvalue, exdays) {
+                      var d = new Date();
+                      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                      var expires = "expires=" + d.toGMTString();
+                      document.cookie = cname + "=" + cvalue + "; " + expires;
+                  }
+
+                  function getCookie(cname) {
+                      var name = cname + "=";
+                      var ca = document.cookie.split(';');
+                      for (var i = 0; i < ca.length; i++) {
+                          var c = ca[i];
+                          while (c.charAt(0) == ' ') c = c.substring(1);
+                          if (c.indexOf(name) != -1) {
+                              return c.substring(name.length, c.length);
+                          }
+                      }
+                      return "";
+                  }
+
+                  function checkCookie() {
+                      var user = getCookie("username");
+                      var pass = getCookie("password");
+                      var yes = getCookie("login");
+                      if (user != "") {
+                          alert("User: " + user + " Password: " + pass + " logged in: " + yes + "");
+                      } else {
+                          user = prompt("Please enter your name:", "");
+                          if (user != "" && user != null) {
+                              setCookie("username", user, 30);
+                          }
+                      }
+                  }
+                  function logout() {
+                      var answer = confirm("Are you sure you want to log out?")
+                      if (answer)
+                          setCookie("login", "no", 30);
+                      else {
+
+                      }
+
+                  }
+       </script>
+      </head>
+        
+    <body bgcolor="#000000" font color="white">
+        <img src="pics\header.png">
+        <!--<h1 align="center"><img src="C:\Users\bEEDON\Documents\1. SCHOOL\CIS\CIS - 72A\Hw 3\bio.png"></h1>-->
+
+         <nav>
+        	<ul>
+            	<li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="packages.html">DJ Packages</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="signup"><a href="sign-up.html">Sign Up</a></li>
+                <li id="login"><a href="login.html">Log in</a></li> 
+                <li id="logout" onclick="logout()" style="display:none"><a href="">Log Out</a></li> 
+                
+             </ul>
+         </nav>
+        <script>
+            var check = getCookie("login");
+            if (check == "yes") {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("signup").style.display = "none";
+                document.getElementById("logout").style.display = "inline";
+            }
+
+        </script>
+        
+        
+
+
+        <section>
+
+        <h2><font color="white">DJ Packages:</font></h2>
+
+        <p><font color="white">
+               
+            </font></p>
+            <p></p>
+            <table class="section" border="1" cellspacing="3" cellpadding="5" align="center" >
+              <summary="">
+            
+
+              <colgroup>
+                  <col class="firstCol" />
+                  <col class="daysCols" span="4" />
+              </colgroup>
+
+              <thead>
+               
+              <tr>
+                  <th><font color="white">Packages</th>
+                  <th><font color="white">Features</th>
+              </tr></font>
+              </thead>
+
+              <tbody  align="left">
+                  <tr>
+                      <th><font color="white">Standard - $399<br /><img src="pics\standard.jpg"></th>
+                      <td><font color="white">
+                          - 4 hours of nonstop, mixed music<br />
+                          - Ideal for kick backs or small parties with the friends<br />
+                          - Sound system for up to 150 people<br />
+                          - Amazing light show enhanced with fog</td>
+                  </tr>
+                  <tr>
+                      <th><font color="white">Lets Rage - $599<br /><img src="pics\rage.jpg"></th>
+                      <td><font color="white">
+                          - 6 hours of nonstop, awesome music<br />
+                          - Ideal for Medium to Large events<br />
+                          - Loud Sound system for up to 500 people<br />
+                          - Amazing light show enhanced with fog<br />                       
+                          - Open alchohol bar</td>
+                  </tr>
+                  <tr>
+                      <th><font color="white">Turn Down for What - $1499<br /><img src="pics\turn.jpg"></th>
+                      <td><font color="white">                          
+                          - 8 hours of Bass in your Face<br />
+                          - Ideal for college students<br />
+                          - Bass pounding speakers for up to 1,500 people!<br />
+                          - Amazing light show enhanced with fog<br />                       
+                          - Open alchohol bar<br />
+                          - Kegs provided with beer of choice<br />
+                          - Beer pong tables<br />
+                          - Jumping houses</td> </td>
+                           
+                  </tr>
+     
+                </tbody>
+          </table>
+
+            <br />
+        </section>
+
+        <h3><font color="white">Follow bEEDON:</h3>
+        <h3>
+            <a href = "http://facebook.com/djbeedon" target ="new">
+                <img src="pics\facebook.png"></a>
+            <a href = "http://youtube.com/officialbeedon" target ="new">
+                <img src="pics\youtube.png"></a>
+            </a>
+            <a href = "https://twitter.com/beedonofficial" target ="new">
+                <img src="pics\twitter.png"></a>
+            </a>
+            <br />
+            <a href = "http://djbeedon.com" target ="new">
+                <img src="pics\website.png"></a>
+            <a href = "https://itunes.apple.com/us/podcast/id880278587" target ="new">
+                <img src="pics\itunes.png"></a>
+            </a>
+
+        </h3>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript">
+        function getFormInfo(url) {
+            //split info at the "?"
+            var info = url.split("?");//Creates 'info' array
+            var nameValuePairs = info[1].split("&");
+            //map info for object
+            var obj = new Object();
+            for (var i = 0; i < nameValuePairs.length - 1; i++) {
+                var map = nameValuePairs[i].split("=");
+                name = map[0].replace("_", " "); //Removes the underscore "_" from the 'name'
+                value = map[1];
+                obj[name] = value;
+            }
+            return obj;
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires;
+
+            counter++;
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == '') c = c.substring(1);
+                if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+
+        var $_GET = getFormInfo(location.href);
+        var str = JSON.stringify($_GET).replace("%40", "@");
+
+        //var user = $_GET["First_Name"];
+
+        setCookie("user", str, 30);
+
+        document.write("Full Cookie: ", getCookie(user));
+
+
+
+
+    </script>
+</body>
+</html>
