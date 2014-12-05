@@ -7,41 +7,64 @@
     <title>Admin Log In</title>
     <link rel="stylesheet" type="text/css" href="stylesheet.css" />
     <script type="text/javascript">
+
+
         function validate_account() {
+            var check1 = document.forms["login"]["user"].value;
+            var check2 = document.forms["login"]["password"].value;
+
+            if ((check1 == "") | (check2 == "")) {
+                alert("Invalid Username or Password!");
+                document.getElementById("user").style.borderColor = '#FF0000';
+                document.getElementById("password").style.borderColor = '#FF0000';
+                return false;
+            }
+
 
             var user = document.forms["login"]["user"].value;
             var pass = document.forms["login"]["password"].value;
             var acc = document.forms["login"]["Account"].value;
 
+           
             var check = (getCookie("accounts"));
             if (check == "") {
                 alert("Invalid Username or Password!");
-            }else{
-                var myCookie = getCookie("Username");
-
-                //	Parse myCookie string:
-                var GetCookie = JSON.parse(myCookie);
-
-                var userC = (+ GetCookie["Username"]);
-                var passC = (+GetCookie["Password"]);
-                var accC = (+GetCookie["Date"]);
-
-                alert(accC);
-
-                if (userC == "") {
+                document.getElementById("user").style.borderColor = '#FF0000';
+                document.getElementById("password").style.borderColor = '#FF0000';
+            } else {
+                if (!getCookie(user)) {
                     alert("Invalid Username or Password!");
                     document.getElementById("user").style.borderColor = '#FF0000';
                     document.getElementById("password").style.borderColor = '#FF0000';
-                    return false;
-                } else if ((user==userC)&&(pass==passC)) {
-                    setCookie("login", "yes", 30);
-                    alert("Welcome "+user+"!");
-                    return true;
                 } else {
-                    alert("Invalid Username or Password!");
-                    document.getElementById("user").style.borderColor = '#FF0000';
-                    document.getElementById("password").style.borderColor = '#FF0000';
-                    return false;
+                    var myCookie = getCookie(user);
+
+                    //	Parse myCookie string:
+                    var GetCookie = JSON.parse(myCookie);
+
+                    //	Parse myCookie string:
+                    var GetCookie = JSON.parse(myCookie);
+                    var accC = ("" + GetCookie["Account"]);
+                    var userC = (+GetCookie["Username"]);
+                    var passC = (+GetCookie["Password"]);
+
+
+
+                    if (userC == "") {
+                        alert("Invalid Username or Password!");
+                        document.getElementById("user").style.borderColor = '#FF0000';
+                        document.getElementById("password").style.borderColor = '#FF0000';
+                        return false;
+                    } else if ((user == userC) && (pass == passC)) {
+                        setCookie("login", "yes", 30);
+                        alert("Welcome " + user + "!");
+                        return true;
+                    } else {
+                        alert("Invalid Username or Password!");
+                        document.getElementById("user").style.borderColor = '#FF0000';
+                        document.getElementById("password").style.borderColor = '#FF0000';
+                        return false;
+                    }
                 }
             }
             
@@ -194,11 +217,12 @@
                          document.write(cookieStr + "<br>");*/
 
                          //	Set cookie name:
-                         var cookieName = 'Username';
+                         var cookieName = user;
 
+                         
                          //	Set cookie For Specific Account:
-                         setCookie('Username', cookieStr, 30);
-
+                         setCookie(user, cookieStr, 30);
+                         
                          //===========================================
                          //ACCOUNTS COOKIE
 

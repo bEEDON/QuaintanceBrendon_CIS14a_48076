@@ -13,18 +13,23 @@
             var pass = document.forms["login"]["password"].value;
             var acc = document.forms["login"]["Account"].value;
 
+
+
             var check = (getCookie("accounts"));
             if (check == "") {
                 alert("Invalid Username or Password!");
             } else {
                 var myCookie = getCookie("Username");
 
+
                 //	Parse myCookie string:
                 var GetCookie = JSON.parse(myCookie);
 
+                //	Parse myCookie string:
+                var GetCookie = JSON.parse(myCookie);
+                var accC = ("" + GetCookie["Account"]);
                 var userC = (+GetCookie["Username"]);
                 var passC = (+GetCookie["Password"]);
-                var accC = (+GetCookie["Account"]);
 
 
                 if (userC == "") {
@@ -43,6 +48,7 @@
                     return false;
                 }
             }
+
 
         }
         //verify form
