@@ -57,9 +57,13 @@
                         document.getElementById("password").style.borderColor = '#FF0000';
                         return false;
                     } else if ((user == userC) && (pass == passC)) {
-                        setCookie("login", "yes", 30);
-                        alert("Welcome " + user + "!");
-                        return true;
+                        if (acc == accC) {
+                            setCookie("login", "yes", 30);
+                            alert("Welcome " + user + "!");
+                            return true;
+                        } else {
+                            alert("The User Account \"" + user + "\" is a User Account. Please Log In on the User Log In Page.");
+                        }
                     } else {
                         alert("Invalid Username or Password!");
                         document.getElementById("user").style.borderColor = '#FF0000';
@@ -275,8 +279,8 @@
 
             </form>
 
-                     <br /><br /><br /><h2>Not a Admin? <a href="adminSignup.html">Sign Up</a></h2>
-                     <h2>Regular Account <a href="login.html">Login</a></h2><br /><br />
+                     <br /><br /><br /><h2>Not an Admin? <a href="adminSignup.html">Sign Up</a></h2>
+                     <h2>User Account <a href="login.html">Login</a></h2><br /><br />
               </fieldset>
              </div>
              <br /><br /><br /><br /><br /><br /><br /><br /><br />

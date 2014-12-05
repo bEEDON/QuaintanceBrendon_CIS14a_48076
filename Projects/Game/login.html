@@ -12,7 +12,6 @@
             var check2 = document.forms["login"]["password"].value;
 
             if ((check1 == "") | (check2 == "")) {
-
                 alert("Invalid Username or Password!");
                 document.getElementById("user").style.borderColor = '#FF0000';
                 document.getElementById("password").style.borderColor = '#FF0000';
@@ -24,7 +23,6 @@
             var pass = document.forms["login"]["password"].value;
             var acc = document.forms["login"]["Account"].value;
 
-           
             var check = (getCookie("accounts"));
             if (check == "") {
                 alert("Invalid Username or Password!");
@@ -47,17 +45,19 @@
                     var userC = (+GetCookie["Username"]);
                     var passC = (+GetCookie["Password"]);
 
-
-
                     if (userC == "") {
                         alert("Invalid Username or Password!");
                         document.getElementById("user").style.borderColor = '#FF0000';
                         document.getElementById("password").style.borderColor = '#FF0000';
                         return false;
                     } else if ((user == userC) && (pass == passC)) {
-                        setCookie("login", "yes", 30);
-                        alert("Welcome " + user + "!");
-                        return true;
+                        if (acc == accC) {
+                            setCookie("login", "yes", 30);
+                            alert("Welcome " + user + "!");
+                            return true;
+                        } else {
+                            alert("The User Account \"" + user + "\" is an Admin Account. Please Log In on the Admin Log In Page.");
+                        }
                     } else {
                         alert("Invalid Username or Password!");
                         document.getElementById("user").style.borderColor = '#FF0000';
@@ -274,8 +274,8 @@
 
             </form>
 
-                     <br /><br /><br /><h2>Not a Member? <a href="signup.html">Sign Up</a></h2>
-                     <h2>Admin Account <a href="adminLogin.html">Login</a></h2><br /><br />
+                     <br /><br /><br /><h2>Not a User? <a href="signup.html">Sign Up</a></h2>
+                     <h2>Admin Account <a href="adminLogin.html">Log In</a></h2><br /><br />
               </fieldset>
              </div>
              <br /><br /><br /><br /><br /><br /><br /><br /><br />
