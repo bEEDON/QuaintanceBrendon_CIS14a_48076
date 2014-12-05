@@ -8,48 +8,65 @@
     <link rel="stylesheet" type="text/css" href="stylesheet.css" />
     <script type="text/javascript">
         function validate_account() {
+            var check1 = document.forms["login"]["user"].value;
+            var check2 = document.forms["login"]["password"].value;
+
+            if ((check1 == "") | (check2 == "")) {
+
+                alert("Invalid Username or Password!");
+                document.getElementById("user").style.borderColor = '#FF0000';
+                document.getElementById("password").style.borderColor = '#FF0000';
+                return false;
+            }
+
 
             var user = document.forms["login"]["user"].value;
             var pass = document.forms["login"]["password"].value;
             var acc = document.forms["login"]["Account"].value;
 
-
-
+           
             var check = (getCookie("accounts"));
             if (check == "") {
                 alert("Invalid Username or Password!");
+                document.getElementById("user").style.borderColor = '#FF0000';
+                document.getElementById("password").style.borderColor = '#FF0000';
             } else {
-                var myCookie = getCookie("Username");
-
-
-                //	Parse myCookie string:
-                var GetCookie = JSON.parse(myCookie);
-
-                //	Parse myCookie string:
-                var GetCookie = JSON.parse(myCookie);
-                var accC = ("" + GetCookie["Account"]);
-                var userC = (+GetCookie["Username"]);
-                var passC = (+GetCookie["Password"]);
-
-
-                if (userC == "") {
+                if (!getCookie(user)) {
                     alert("Invalid Username or Password!");
                     document.getElementById("user").style.borderColor = '#FF0000';
                     document.getElementById("password").style.borderColor = '#FF0000';
-                    return false;
-                } else if ((user == userC) && (pass == passC) && (acc == accC)) {
-                    setCookie("login", "yes", 30);
-                    alert("Welcome " + user + "!");
-                    return true;
                 } else {
-                    alert("Invalid Username or Password!");
-                    document.getElementById("user").style.borderColor = '#FF0000';
-                    document.getElementById("password").style.borderColor = '#FF0000';
-                    return false;
+                    var myCookie = getCookie(user);
+
+                    //	Parse myCookie string:
+                    var GetCookie = JSON.parse(myCookie);
+
+                    //	Parse myCookie string:
+                    var GetCookie = JSON.parse(myCookie);
+                    var accC = ("" + GetCookie["Account"]);
+                    var userC = (+GetCookie["Username"]);
+                    var passC = (+GetCookie["Password"]);
+
+
+
+                    if (userC == "") {
+                        alert("Invalid Username or Password!");
+                        document.getElementById("user").style.borderColor = '#FF0000';
+                        document.getElementById("password").style.borderColor = '#FF0000';
+                        return false;
+                    } else if ((user == userC) && (pass == passC)) {
+                        setCookie("login", "yes", 30);
+                        alert("Welcome " + user + "!");
+                        return true;
+                    } else {
+                        alert("Invalid Username or Password!");
+                        document.getElementById("user").style.borderColor = '#FF0000';
+                        document.getElementById("password").style.borderColor = '#FF0000';
+                        return false;
+                    }
                 }
             }
-
-
+            
         }
         //verify form
         function validate_Form() {
@@ -115,7 +132,6 @@
         //	Adjust HTML Encoded Characters
         function adjustCharacters(field) {
             for (var i = 0; i < $_GET[field].length; i++) {
-                $_GET[field] = $_GET[field].replace('"', " ");
                 $_GET[field] = $_GET[field].replace("+", " ");
                 $_GET[field] = $_GET[field].replace("%20", " ");
                 $_GET[field] = $_GET[field].replace("%21", "!");
@@ -152,20 +168,15 @@
                 $_GET[field] = $_GET[field].replace("%7E", "~");
             }
         }
-
-        function adjustAccount(field) {
-            for (var i = 0; i < $_GET[field].length; i++) {
-                $_GET[field] = $_GET[field].replace
-            }
-        }
 </script>
     </head>
         
 <body>
+
     <script type="text/javascript">
         document.write('<FONT COLOR="white">');
 
-        
+
     </script>
 
 
@@ -183,9 +194,7 @@
                          var user = $_GET["Username"];
                          var pass = $_GET["Password"];
 
-                         
 
-                         
 
                          //Setting that info to a cookie
                          setCookie(user, pass, 30);
@@ -198,7 +207,7 @@
                          adjustCharacters('Password');
                          adjustCharacters('Account');
                          adjustCharacters('Date');
-                       
+
                          //	Stringify $_GET object:
                          var cookieStr = JSON.stringify($_GET);
 
@@ -207,17 +216,18 @@
                          document.write(cookieStr + "<br>");*/
 
                          //	Set cookie name:
-                         var cookieName = 'Username';
+                         var cookieName = user;
+
 
                          //	Set cookie For Specific Account:
-                         setCookie('Username', cookieStr, 30);
+                         setCookie(user, cookieStr, 30);
 
                          //===========================================
                          //ACCOUNTS COOKIE
 
                          //	Get cookie:
                          var accountCookie = getCookie('accounts');
-                         accountCookie += ("<br>"+cookieStr);
+                         accountCookie += ("<br>" + cookieStr);
                          newTemp = accountCookie.replace(/"/g, " ");
                          setCookie('accounts', newTemp, 30);
 
@@ -249,10 +259,11 @@
                              }
                          }
 
-   
+
                              </script>
                          </div>
                     <br />
+                    
                     
                      <h1><font align="center" color="white">Log In: </font></h1>
               <form name="login" action="game.html" onsubmit="return validate_Form()" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
