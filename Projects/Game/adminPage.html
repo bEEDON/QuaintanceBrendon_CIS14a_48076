@@ -58,14 +58,16 @@
 
     </script>
 
-    <div id="menu">
+   
         <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/title.jpg) no-repeat"> 
            
-             <div align="center" id="titlep">
+             
                  <br /><br /><br /><br /><br /><br /><br />
-                
+                <div align="center" id="titlep">
                  <fieldset style="width: 800px; background-color:black">
-                     <br />
+                     
+                      <div id="menu">
+                          <br />
                      <div>
 
                          </div>
@@ -77,13 +79,35 @@
                <button id="logout" onClick="document.location.href='adminLogin.html'"  align="center">Log Out</button><br /><br />
               <button id="quit" onClick="document.location.href='index.html'"  align="center">Quit Game</button><br /><br />
                      <br /><br /><br /><br />
+                           </div>
+
+
+                     <div id ="show" style="display:none">
+                         <br /><br /><br />
+                         <h1>All Registerd Accounts:</h1><br />
+                         <script type="text/javascript">                        
+                             //	Display All Accounts:
+                             
+                            var accounts = getCookie('accounts');
+                            document.write(accounts);
+
+                         
+                         </script> 
+
+                         <br /><br /><br /><br /><br /><br /> 
+                         <button id="back" onClick="back();"  align="center">Back</button><br /><br />
+                         <br /><br />
+                     </div>
+
+
               </fieldset>
              </div>
              <br /><br /><br /><br /><br /><br /><br /><br />
-       </div>
+      
 
        <script type="text/javascript">
            document.getElementById("play").style.width = "300px";
+           document.getElementById("back").style.width = "300px";
            document.getElementById("accounts").style.width = "300px";
            document.getElementById("logout").style.width = "300px";
            document.getElementById("quit").style.width = "300px";
@@ -92,10 +116,13 @@
 
            function accounts() {
 
-
-
+               document.getElementById("menu").style.display = "none";
+               document.getElementById("show").style.display = "block";
            }
-
+           function back() {
+               document.getElementById("menu").style.display = "block";
+               document.getElementById("show").style.display = "none";
+           }
 
        </script>
 

@@ -291,8 +291,7 @@
                 Ally.att3 = 0,
                 Ally.att3M = 0,
                 Ally.items = 0,
-                Ally.armor = 200
-                mainMenu();
+                Ally.armor = 200;
                 itemStoreSpeech();
             }
             function assign2() {
@@ -582,6 +581,32 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                 } else {
                         document.getElementById("attacks").innerHTML = ("Your Attack Missed!");
                     }
+                    //If active, Reduces double damage duration by 1
+                    if (items.ddA > 1) { items.ddA--; }
+                    //Notifies users that DD wore off
+                    if (items.ddA == 1) {
+                        refreshScreen();
+                        alert("Double Damage has worn off!");
+                        items.ddA--;
+
+                        if (items.invisA > 1) {
+                            if (Ally.name == "Aragorn the Swordsman") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/use/aragorn5.jpg' style='float:left'/>";
+                            } else if (Ally.name == "Legolas the Archer") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/use/legolas5.jpg' style='float:left'/>";
+                            } else if (Ally.name == "Gandalf the Wizard") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/use/gandalf5.jpg' style='float:left'/>";
+                            }
+                        } else {
+                            if (Ally.name == "Aragorn the Swordsman") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/aragorn.jpg' style='float:left'/>";
+                            } else if (Ally.name == "Legolas the Archer") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/legolas.jpg' style='float:left'/>";
+                            } else if (Ally.name == "Gandalf the Wizard") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/gandalf.jpg' style='float:left'/>";
+                            }
+                        }
+                    }
                     setTimeout(function () { enemyAttack(); }, 3000);
             }, 3000);
                 
@@ -654,6 +679,32 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                         document.getElementById("attacks").innerHTML = ("Your Attack Hit " + times + " Times! Damage Dealt: " + Ally.att2 + " Total Damage: " + tDmg);
                         time = 9000;
                     }
+                    //If active, Reduces double damage duration by 1
+                    if (items.ddA > 1) { items.ddA--; }
+                    //Notifies users that DD wore off
+                    if (items.ddA == 1) {
+                        refreshScreen();
+                        alert("Double Damage has worn off!");
+                        items.ddA--;
+
+                        if (items.invisA > 1) {
+                            if (Ally.name == "Aragorn the Swordsman") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/use/aragorn5.jpg' style='float:left'/>";
+                            } else if (Ally.name == "Legolas the Archer") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/use/legolas5.jpg' style='float:left'/>";
+                            } else if (Ally.name == "Gandalf the Wizard") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/use/gandalf5.jpg' style='float:left'/>";
+                            }
+                        } else {
+                            if (Ally.name == "Aragorn the Swordsman") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/aragorn.jpg' style='float:left'/>";
+                            } else if (Ally.name == "Legolas the Archer") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/legolas.jpg' style='float:left'/>";
+                            } else if (Ally.name == "Gandalf the Wizard") {
+                                document.getElementById("pic").innerHTML = "<img src='pics/gandalf.jpg' style='float:left'/>";
+                            }
+                        }
+                    }
                     setTimeout(function () { enemyAttack(); }, 4000+(1000*(count/20)));
                 } else {
                     Ally.mana -= Ally.att2M;
@@ -668,6 +719,32 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                             document.getElementById("attacks").innerHTML = ("Your Attack Hit! Damage Dealt: " + Ally.att2);
                         } else {
                             document.getElementById("attacks").innerHTML = ("Your Attack Missed!");
+                        }
+                    //If active, Reduces double damage duration by 1
+                        if (items.ddA > 1) { items.ddA--; }
+                    //Notifies users that DD wore off
+                        if (items.ddA == 1) {
+                            refreshScreen();
+                            alert("Double Damage has worn off!");
+                            items.ddA--;
+
+                            if (items.invisA > 1) {
+                                if (Ally.name == "Aragorn the Swordsman") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/use/aragorn5.jpg' style='float:left'/>";
+                                } else if (Ally.name == "Legolas the Archer") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/use/legolas5.jpg' style='float:left'/>";
+                                } else if (Ally.name == "Gandalf the Wizard") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/use/gandalf5.jpg' style='float:left'/>";
+                                }
+                            } else {
+                                if (Ally.name == "Aragorn the Swordsman") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/aragorn.jpg' style='float:left'/>";
+                                } else if (Ally.name == "Legolas the Archer") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/legolas.jpg' style='float:left'/>";
+                                } else if (Ally.name == "Gandalf the Wizard") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/gandalf.jpg' style='float:left'/>";
+                                }
+                            }
                         }
                         setTimeout(function () { enemyAttack(); }, 3000);
                     }
@@ -707,32 +784,6 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                     refreshScreen();
                     document.getElementById("attacks").innerHTML = ("Your Attack Missed!");
                 }
-
-
-                setTimeout(function () {
-                    
-                }, 3000);
-                enemyAttack();
-            }, 3000);
-
-        }
-
-        //=========== Enemy Attack ================================
-        function enemyAttack() {
-            document.getElementById("itemBag").style.display = "none";
-            document.getElementById("prompt").style.display = "inline";
-            document.getElementById("attbuttons").style.display = "none";
-
-            assignDamage();
-
-            //===== Determine if enemy is still alive ============
-            if (Enemy.health <= 0) {
-                alert("You Have Slain " + Enemy.name + "!!");
-                alert("You are Victorious!!");
-                document.getElementById("mainMenu").display = "block";
-                mainMenu();
-            } else {
-
                 //If active, Reduces double damage duration by 1
                 if (items.ddA > 1) { items.ddA--; }
                 //Notifies users that DD wore off
@@ -759,6 +810,28 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                         }
                     }
                 }
+                enemyAttack();
+            }, 3000);
+
+        }
+
+        //=========== Enemy Attack ================================
+        function enemyAttack() {
+            document.getElementById("itemBag").style.display = "none";
+            document.getElementById("prompt").style.display = "inline";
+            document.getElementById("attbuttons").style.display = "none";
+
+            assignDamage();
+
+            //===== Determine if enemy is still alive ============
+            if (Enemy.health <= 0) {
+                alert("You Have Slain " + Enemy.name + "!!");
+                alert("You are Victorious!!");
+                document.getElementById("mainMenu").display = "block";
+                mainMenu();
+            } else {
+
+
 
 
 
@@ -983,7 +1056,10 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
             } else {
                 items.dd-=1;
                 items.amount -= 1;
-                items.ddA = 5;
+                items.ddA = 4;
+
+                alert("Double Damage Has Been Activated for your next 3 Attacks!");
+                document.getElementById("itemBag").style.display = "none";
 
                 if (items.invisA > 1) {
                     if (Ally.name == "Aragorn the Swordsman") {
@@ -1003,8 +1079,7 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                     }
                 }
 
-                alert("Double Damage Has Been Activated for your next 3 Attacks!");
-                document.getElementById("itemBag").style.display = "none";
+                
 
 
 
@@ -1019,6 +1094,9 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                 items.invis-=1;
                 items.amount -= 1;
                 items.invisA = 4;
+
+                alert("Invisibility Has Been Activated for the Enemy's next 3 Attacks!");
+                document.getElementById("itemBag").style.display = "none";
 
                 if (items.ddA > 1) {
                     if (Ally.name == "Aragorn the Swordsman") {
@@ -1038,8 +1116,7 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                     }
                 }
 
-                alert("Invisibility Has Been Activated for the Enemy's next 3 Attacks!");
-                document.getElementById("itemBag").style.display = "none";
+                
 
 
 

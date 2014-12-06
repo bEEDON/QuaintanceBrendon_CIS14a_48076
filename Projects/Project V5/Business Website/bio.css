@@ -1,0 +1,67 @@
+﻿.h1
+{
+    margin-left: 420px;
+}
+
+html
+{
+    color: rgb(255,255,255);
+}
+
+body {
+margin: 0px auto;
+padding: 0px;
+line-height: 1.5em;
+width: 60%;
+max-width: 850px;
+min-width: 250px;
+font-family: Verdana, Geneva, sans-serif;
+
+}
+
+
+section {
+width: 85%;
+float: left;
+}
+
+section.full {
+width: 100%;
+}
+
+section p {
+font-size: 1.1em;
+margin: 0px 20px 10px 0px;
+}
+
+
+nav {
+display: block;
+width: 100%;
+}
+
+section nav {
+font-size: 0.9em;
+text-align: center;
+padding-bottom: 20px;
+}
+
+
+nav ul {
+list-style-type: none;
+margin: 0px;
+padding: 0px;
+font-size: 0.8em;
+}
+
+nav ul li {
+display: block;
+float: left;
+width: 10%;
+height: 20px;
+text-align: center;
+border: 3px solid #2d04ff;
+background-color: #00b9ff;
+line-height: 1.5em;
+margin: 0px 4px 5px 0px;
+};

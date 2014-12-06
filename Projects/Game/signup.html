@@ -52,7 +52,7 @@
         //Verify Password
         function validate_password2() {
             var pass1 = document.forms["input"]["Password"].value;
-            var pass2 = document.forms["input"]["pass2"].value;
+            var pass2 = document.forms["input"]["Password2"].value;
             if (pass1 == pass2) {
                 document.getElementById("Password").style.borderColor = 'black';
                 return true;
@@ -107,8 +107,15 @@
 
         //verify form
         function validate_Form() {
+            
+
+            if (!validate_email()) return false;
+            if (!validate_user()) return false;
+            if (!validate_password()) return false;
+            if (!validate_password2()) return false;
+
             var currentdate = new Date();
-            var datetime = + (currentdate.getMonth() + 1) + "/"
+            var datetime = +(currentdate.getMonth() + 1) + "/"
                             + currentdate.getDate() + "/"
                             + currentdate.getFullYear() + " @ "
                             + currentdate.getHours() + ":"
@@ -116,11 +123,6 @@
                             + currentdate.getSeconds();
 
             document.getElementById("Date").setAttribute('value', datetime);
-
-            if (!validate_email()) return false;
-            if (!validate_user()) return false;
-            if (!validate_password()) return false;
-            if (!validate_password2()) return false;
             return true;
         }
 
@@ -144,13 +146,13 @@
                  <fieldset style="width: 800px; background-color:black">
                     <br />
                     <br /><br />
-                     <h1><font align="center" color="white">Sign Up: </font></h1>
+                     <h1><font  color="white">Sign Up: </font></h1>
                    
 	        <form name="input" action="login.html" onsubmit="return validate_Form()" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<font color = "white">Email Adress: <input name="Email" id="Email" type="text" size="30"/ ><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   
                 <font color = "white">Username: &nbsp<input name="Username" id="Username" type="text" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
 				<font color = "white">Password:  &nbsp<input name="Password" id="Password" type="password" size="30"/><br>&nbsp&nbsp
-                 <input type="hidden" name="Account" id="Account" value="Regular" />
+                 <input type="hidden" name="Account" id="Account" value="User" />
                  <input type="hidden" id="Date" name="Date" value="" />
                 <font color = "white">Verify Password: <input name="Password2" id="Password2" type="password" size="30"/><br><br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<input id="signcomplete" type="submit" value="Sign Up"/>

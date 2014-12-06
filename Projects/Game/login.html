@@ -42,8 +42,8 @@
                     //	Parse myCookie string:
                     var GetCookie = JSON.parse(myCookie);
                     var accC = ("" + GetCookie["Account"]);
-                    var userC = (+GetCookie["Username"]);
-                    var passC = (+GetCookie["Password"]);
+                    var userC = (""+GetCookie["Username"]);
+                    var passC = (""+GetCookie["Password"]);
 
                     if (userC == "") {
                         alert("Invalid Username or Password!");
@@ -54,9 +54,11 @@
                         if (acc == accC) {
                             setCookie("login", "yes", 30);
                             alert("Welcome " + user + "!");
+                            setCookie("user", check1, 30);
                             return true;
                         } else {
                             alert("The User Account \"" + user + "\" is an Admin Account. Please Log In on the Admin Log In Page.");
+                            document.location.href = "adminLogin.html";
                         }
                     } else {
                         alert("Invalid Username or Password!");
@@ -227,15 +229,10 @@
 
                          //	Get cookie:
                          var accountCookie = getCookie('accounts');
-                         accountCookie += ("<br>" + cookieStr);
+                         accountCookie += ("<br><br>" + cookieStr);
                          newTemp = accountCookie.replace(/"/g, " ");
                          setCookie('accounts', newTemp, 30);
 
-                         /*
-                         //	Display All Accounts:
-                         document.write("<br>DISPLAY Account stinrg:<br>");
-                         document.write(newTemp + "<br>");
-                         */
 
                          //=================================================
                          //	Get cookie:
@@ -245,10 +242,12 @@
                          var GetCookie = JSON.parse(myCookie);
                          //	Display GetCookie:
                          document.write("<h2>Account Information:</h2>");
-                         document.write("<h4>");
+                         document.write("<h3>");
                          for (var name in GetCookie) {
                              if (name != "Password") {
+                                 if (name == "Date") { }else{
                                  document.write(name + ": " + GetCookie[name] + "<br>");
+                                } 
                              } else {
                                  var pass2 = "";
 
@@ -269,7 +268,7 @@
               <form name="login" action="game.html" onsubmit="return validate_Form()" method="get" id="signupform" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <font color="white">Username: &nbsp<input name="user" id="user" type="text" size="30"/><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
             <font color="white">Password: <input name="password" id="password" type="password" size="30"/><br><br />&nbsp&nbsp
-                <input type="hidden" name="Account" id="Account" value="Regular" />
+                <input type="hidden" name="Account" id="Account" value="User" />
             <input id="signcomplete" type="submit" value="Log in"/>
 
             </form>

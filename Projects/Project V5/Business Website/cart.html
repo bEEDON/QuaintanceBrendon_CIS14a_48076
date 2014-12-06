@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login</title>
+       <script type="text/javascript" 
+           src="sign-up.js" >//Get Function
+       </script>
+      <link href="bio.css" rel="stylesheet" type="text/css" />
+    <link type="text/javascript" href="loggedin.js" />
+
+    <script type="text/javascript">
+       
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1);
+                if (c.indexOf(name) != -1) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            var user = getCookie("username");
+            var pass = getCookie("password");
+            var yes = getCookie("login");
+            if (user != "") {
+                alert("User: " + user +" Password: "+pass+" logged in: "+yes+"");
+            } else {
+                user = prompt("Please enter your name:", "");
+                if (user != "" && user != null) {
+                    setCookie("username", user, 30);
+                }
+            }
+        }
+        function logout() {
+            var answer = confirm("Are you sure you want to log out?")
+            if (answer) {
+                setCookie("login", "no", 30);
+                document.location.href = 'login.html'
+                document.cookie = "black=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                document.cookie = "standard=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                document.cookie = "rage=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                document.cookie = "jumpers=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                document.cookie = "chairs=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                document.cookie = "kegs=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+            }
+
+        }
+        var total = 0;
+
+    </script>
+</head>
+
+    <body bgcolor="#000000" font color="white">
+        <img src="pics\header.png">
+        <!--<h1 align="center"><img src="C:\Users\bEEDON\Documents\1. SCHOOL\CIS\CIS - 72A\Hw 3\bio.png"></h1>-->
+
+         <nav>
+        	<ul>
+            	<li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="signup"><a href="sign-up.html">Sign Up</a></li>
+                <li id="login"><a href="login.html">Log in</a></li> 
+                <li id="cart" style="display:none"><a href="cart.html" ">View Cart</a></li> 
+                <li id="logout" onclick="logout()" style="display:none"><a href="">Log Out</a></li> 
+                
+             </ul>
+         </nav>
+        <script>
+            var check = getCookie("login");
+            if (check == "yes") {
+                document.getElementById("cart").style.display = "inline";
+                document.getElementById("login").style.display = "none";
+                document.getElementById("signup").style.display = "none";
+                document.getElementById("logout").style.display = "inline";
+            }
+
+        </script>
+        
+        
+       <section>
+        
+
+           <script type="text/javascript">
+
+
+           </script>
+
+      
+           
+           <h2><font color="white">Shopping Cart:</font></h2><h4 align="center"><a href="services.html">Continue Shopping</a></h4>
+           <hr /><div id="none" align="center">You have no items in your Cart</div><br />
+           
+
+                <div id="sta" style="display:none">
+               <img src="pics\standard.jpg" style='float:left' height="94" width="150" >
+                          &nbsp;<font color="white">Standard Package &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        
+                          Quantity: <script type="text/javascript">document.write(getCookie("standard"));</script> &nbsp&nbsp
+                              &nbsp&nbsp&nbsp&nbsp$<script type="text/javascript">document.write(getCookie("standard") * 399.99); total += (getCookie("standard") * 399.99);</script>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                              <button id="1" onClick="delete1()"  align="center" >Delete</button><br /><br /><br /><br /><br />
+
+                 </div>             
+                         
+
+            <div id="rag" style="display:none">
+               <img src="pics\rage.jpg" style='float:left' height="94" width="150">
+                          &nbsp;<font color="white">Lets Rage Package &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        
+                          Quantity: <script type="text/javascript">document.write(getCookie("rage"));</script> &nbsp&nbsp
+                              &nbsp&nbsp&nbsp&nbsp$<script type="text/javascript">document.write(getCookie("rage") * 599.99); total += (getCookie("rage") * 599.99);</script>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                              <button id="2" onClick="delete2()"  align="center" >Delete</button><br /><br /><br /><br /><br />
+                 </div>             
+
+
+            <div id="bla" style="display:none">
+               <img src="pics\turn.jpg" style='float:left' height="94" width="150">
+                          &nbsp;<font color="white">Blacked Out Package &nbsp&nbsp&nbsp&nbsp
+        
+                          Quantity: <script type="text/javascript">document.write(getCookie("black"));</script> &nbsp&nbsp
+                              &nbsp&nbsp&nbsp&nbsp$<script type="text/javascript">document.write(getCookie("black") * 1499.99); total += (getCookie("black") * 1499.99);</script>&nbsp&nbsp&nbsp&nbsp
+                              <button id="3" onClick="delete3()"  align="center" >Delete</button><br /><br /><br /><br /><br />
+                 </div> 
+
+            <div id="cha" style="display:none">
+               <img src="pics\tables.jpg" style='float:left' height="94" width="150">
+                          &nbsp;<font color="white">Chairs & Tables &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        
+                          Quantity: <script type="text/javascript">document.write(getCookie("chairs"));</script> &nbsp&nbsp
+                              &nbsp&nbsp&nbsp&nbsp$<script type="text/javascript">document.write(Math.floor((getCookie("chairs") * 99.99)* 100) / 100); total += (getCookie("chairs") * 99.99);</script>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                              <button id="4" onClick="delete4()"  align="center" >Delete</button><br /><br /><br /><br /><br />
+                 </div>
+                 
+
+               <div id="keg" style="display:none">
+               <img src="pics\keg.jpg" style='float:left' height="94" width="150">
+                          &nbsp;<font color="white">Beer Kegs &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        
+                          Quantity: <script type="text/javascript">document.write(getCookie("kegs"));</script> &nbsp&nbsp
+                              &nbsp&nbsp&nbsp&nbsp$<script type="text/javascript">document.write(Math.floor((getCookie("kegs") * 149.99)*100)/100); total += (getCookie("kegs") * 149.99);</script>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                              <button id="5" onClick="delete5()"  align="center" >Delete</button><br /><br /><br /><br /><br />
+                 </div>
+
+                       <div id="jum" style="display:none">
+               <img src="pics\jumper.jpg" style='float:left' height="94" width="150">
+                          &nbsp;<font color="white">Jumping House &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        
+                          Quantity: <script type="text/javascript">document.write(getCookie("jumpers"));</script> &nbsp&nbsp
+                              &nbsp&nbsp&nbsp&nbsp$<script type="text/javascript">document.write(Math.floor((getCookie("jumpers") * 199.99)*100)/100); total += (getCookie("jumpers") * 199.99);</script>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                              <button id="6" onClick="delete6()"  align="center" >Delete</button><br /><br /><br /><br /><br />
+                 </div>
+           <hr /><h4 class="h1">Subtotal: $<script>document.write(Math.floor((total)*100)/100);</script>
+               <br />&nbsp&nbsp&nbsp&nbsp;Taxes: $&nbsp&nbsp<script>var t = (Math.floor(total * .08 * 100) / 100);document.write(t);</script>
+                <br /><br /><strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;Total: $<script>var totalCost = (Math.floor((total + t) * 100) / 100); document.write(totalCost);</script></strong>
+                       
+
+                 </h4><hr /><br /><br />
+           <div align ="center">
+            <button id="check" onClick="checkOut()"  align="center" >Check Out</button>
+               </div><br /><br />
+           </section>
+
+        <script>
+            setCookie("total", totalCost, 30);
+
+
+        
+
+
+            document.getElementById("check").style = "width:250px";
+
+            function delete1() {
+                var c = confirm("Are you sure you want to delete?");
+                if (c) {
+                    document.cookie = "standard=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.location.href = 'cart.html';
+                }
+            }
+
+            function delete2() {
+                var c = confirm("Are you sure you want to delete?");
+                if (c) {
+                    document.cookie = "rage=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.location.href = 'cart.html';
+                }
+            }
+
+            function delete3() {
+                var c = confirm("Are you sure you want to delete?");
+                if (c) {
+                    document.cookie = "black=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.location.href = 'cart.html';
+                }
+            }
+
+            function delete4() {
+                var c = confirm("Are you sure you want to delete?");
+                if (c) {
+                    document.cookie = "chairs=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.location.href = 'cart.html';
+                }
+            }
+
+            function delete5() {
+                var c = confirm("Are you sure you want to delete?");
+                if (c) {
+                    document.cookie = "kegs=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.location.href = 'cart.html';
+                }
+            }
+
+            function delete6() {
+                var c = confirm("Are you sure you want to delete?");
+                if (c) {
+                    document.cookie = "jumpers=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.location.href = 'cart.html';
+                }
+            }
+
+            function checkOut() {
+                var c = confirm("Are you sure you want to Check Out?");
+                if (c) {
+
+                    document.location.href = 'orderComplete.html';
+                }
+            }
+
+            if (getCookie("standard")) {
+                document.getElementById("sta").style.display = "inline";
+            }
+            if (getCookie("rage")) {
+                document.getElementById("rag").style.display = "inline";
+            }
+            if (getCookie("black")) {
+                document.getElementById("bla").style.display = "inline";
+            }
+            if (getCookie("chairs")) {
+                document.getElementById("cha").style.display = "inline";
+            }
+            if (getCookie("kegs")) {
+                document.getElementById("keg").style.display = "inline";
+            }
+            if (getCookie("jumpers")) {
+                document.getElementById("jum").style.display = "inline";
+            }
+
+
+            if (total == 0) {
+                document.getElementById("check").style.display = "none";
+                document.getElementById("none").style.display = "block";
+            } else if (total > 0) {
+                document.getElementById("check").style.display = "block";
+                document.getElementById("none").style.display = "none";
+            }
+
+        </script>
+
+        <h3><font color="white">Follow bEEDON:</h3>
+        <h3>
+            <a href = "http://facebook.com/djbeedon" target ="new">
+                <img src="pics\facebook.png"></a>
+            <a href = "http://youtube.com/officialbeedon" target ="new">
+                <img src="pics\youtube.png"></a>
+            </a>
+            <a href = "https://twitter.com/beedonofficial" target ="new">
+                <img src="pics\twitter.png"></a>
+            </a>
+            <br />
+            <a href = "http://djbeedon.com" target ="new">
+                <img src="pics\website.png"></a>
+            <a href = "https://itunes.apple.com/us/podcast/id880278587" target ="new">
+                <img src="pics\itunes.png"></a>
+            </a>
+
+        </h3>
+
+
+</body>
+</html>
+<!doctype html>

@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+   <!--
+      Website  
+      Author: Brendon Quaintance
+      Date:   09/15/14
+   -->
+
+      <meta charset="UTF-8" />
+      <title>Sign Up</title>
+      <link href="bio.css" rel="stylesheet" type="text/css" />
+<script>
+
+    //Email Address
+    function validate_email() {
+        var Arr = document.forms["input"]["Email"].value.match(/^\s*[A-Za-z0-9!@#$%^&*()_+-=]+[@][A-Za-z0-9!@#$%^&*()_+-=]+[.][A-Za-z]{3}\s*$/);
+        if (Arr != null) {
+            document.getElementById("Email").style.borderColor = 'black';
+            return true;
+        } else {
+            alert("Invalid Email");
+            document.getElementById("Email").style.borderColor = '#FF0000';
+            return false;
+        }
+    }
+
+    //User name
+    function validate_user() {
+        var Arr = document.forms["input"]["Username"].value.match(/^[A-Za-z0-9]+$/g);
+        if (Arr != null) {
+            document.getElementById("Username").style.borderColor = 'black';
+            return true;
+        } else {
+            alert("Invalid Username");
+            document.getElementById("Username").style.borderColor = '#FF0000';
+            return false;
+        }
+
+    }
+
+    //Password
+    function validate_password() {
+        var Arr = document.forms["input"]["Password"].value.match(/^\s*[A-Za-z0-9!@#$%^&*()_+-=]+\s*$/);
+        if (Arr != null) {
+            document.getElementById("Password").style.borderColor = 'black';
+            return true;
+        } else {
+            alert("Invalid Password");
+            document.getElementById("Password").style.borderColor = '#FF0000';
+            return false;
+        }
+    }
+    //Verify Password
+    function validate_password2() {
+        var pass1 = document.forms["input"]["Password"].value;
+        var pass2 = document.forms["input"]["Password2"].value;
+        if (pass1 == pass2) {
+            document.getElementById("Password").style.borderColor = 'black';
+            return true;
+        } else {
+            alert("Your Passwords do not match!");
+            document.getElementById("Password").style.borderColor = '#FF0000';
+            document.getElementById("Password2").style.borderColor = '#FF0000';
+            return false;
+
+        }
+    }
+
+    function adjustCharacters(field) {
+        for (var i = 0; i < $_GET[field].length; i++) {
+            $_GET[field] = $_GET[field].replace('"', " ");
+            $_GET[field] = $_GET[field].replace("+", " ");
+            $_GET[field] = $_GET[field].replace("%20", " ");
+            $_GET[field] = $_GET[field].replace("%21", "!");
+            $_GET[field] = $_GET[field].replace("%22", "\"");
+            $_GET[field] = $_GET[field].replace("%23", "#");
+            $_GET[field] = $_GET[field].replace("%24", "$");
+            $_GET[field] = $_GET[field].replace("%25", "%");
+            $_GET[field] = $_GET[field].replace("%26", "&");
+            $_GET[field] = $_GET[field].replace("%27", "'");
+            $_GET[field] = $_GET[field].replace("%28", "(");
+            $_GET[field] = $_GET[field].replace("%29", ")");
+            $_GET[field] = $_GET[field].replace("%2A", "*");
+            $_GET[field] = $_GET[field].replace("%2B", "+");
+            $_GET[field] = $_GET[field].replace("%2C", ",");
+            $_GET[field] = $_GET[field].replace("%2D", "-");
+            $_GET[field] = $_GET[field].replace("%2E", ".");
+            $_GET[field] = $_GET[field].replace("%2F", "/");
+            $_GET[field] = $_GET[field].replace("%3A", ":");
+            $_GET[field] = $_GET[field].replace("%3B", ";");
+            $_GET[field] = $_GET[field].replace("%3C", "<");
+            $_GET[field] = $_GET[field].replace("%3D", "=");
+            $_GET[field] = $_GET[field].replace("%3E", ">");
+            $_GET[field] = $_GET[field].replace("%3F", "?");
+            $_GET[field] = $_GET[field].replace("%40", "@");
+            $_GET[field] = $_GET[field].replace("%5B", "[");
+            $_GET[field] = $_GET[field].replace("%5C", "\\");
+            $_GET[field] = $_GET[field].replace("%5D", "]");
+            $_GET[field] = $_GET[field].replace("%5E", "^");
+            $_GET[field] = $_GET[field].replace("%5F", "_");
+            $_GET[field] = $_GET[field].replace("%60", "`");
+            $_GET[field] = $_GET[field].replace("%7B", "{");
+            $_GET[field] = $_GET[field].replace("%7C", "|");
+            $_GET[field] = $_GET[field].replace("%7D", "}");
+            $_GET[field] = $_GET[field].replace("%7E", "~");
+        }
+    }
+
+    //verify form
+    function validate_Form() {
+
+
+        if (!validate_email()) return false;
+        if (!validate_user()) return false;
+        if (!validate_password()) return false;
+        if (!validate_password2()) return false;
+
+        var currentdate = new Date();
+        var datetime = +(currentdate.getMonth() + 1) + "/"
+                        + currentdate.getDate() + "/"
+                        + currentdate.getFullYear() + " @ "
+                        + currentdate.getHours() + ":"
+                        + currentdate.getMinutes() + ":"
+                        + currentdate.getSeconds();
+
+        document.getElementById("Date").setAttribute('value', datetime);
+
+        return true;
+    }
+</script>
+</head>
+
+ <body bgcolor="#000000" font color="white">
+        <img src="pics\header.png">
+        <!--<h1 align="center"><img src="C:\Users\bEEDON\Documents\1. SCHOOL\CIS\CIS - 72A\Hw 3\bio.png"></h1>-->
+
+         <nav>
+        	<ul>
+            	<li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="packages.html">DJ Packages</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="signup"><a href="sign-up.html">Sign Up</a></li>
+                <li id="login"><a href="login.html">Log in</a></li> 
+                <li id="logout" onclick="logout()" style="display:none"><a href="">Log Out</a></li> 
+                
+             </ul>
+         </nav>
+        <script>
+            var check = getCookie("login");
+            if (check == "yes") {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("signup").style.display = "none";
+                document.getElementById("logout").style.display = "inline";
+            }
+
+        </script>
+        
+        <section>
+       
+        <br /><br />
+       <section align="center">
+           <fieldset>
+               <div align="center">
+               <h2 align="center"><font color="white">Admin Sign Up:</font></h2>
+	        <form name="input" action="adminLogin.html" onsubmit="return validate_Form()" method="get" id="signupform" >&nbsp&nbsp&nbsp
+				<font color = "white" align="center">Email Adress: <input name="Email" id="Email" type="text" size="30"/ ><br /> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              <font color = "white">Username: &nbsp<input name="Username" id="Username" type="text" size="30"/><br><br />  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<font color = "white">Password:  &nbsp<input name="Password" id="Password" type="password" size="30"/><br>
+                 <input type="hidden" name="Account" id="Account" value="Admin" />
+                 <input type="hidden" id="Date" name="Date" value="" />
+                <font color = "white">Verify Password: <input name="Password2" id="Password2" type="password" size="30"/><br><br />
+				<input id="signcomplete" type="submit" value="Sign Up"/>
+                    
+               <br /><br /><br /><h2>Already a Admin? <a href="adminLogin.html">Log In</a></h2>
+                     <h2>User Account <a href="login.html">Log In</a></h2><br />
+
+               </div>
+                    </fieldset>
+			</form>
+
+        </section>
+            <script type="text/javascript">
+                document.getElementById("signcomplete").style.width = "100px";
+
+            </script>
+
+
+        </section>
+        <h3><font color="white">Follow bEEDON:</h3>
+        <h3>
+            <a href = "http://facebook.com/djbeedon" target ="new">
+                <img src="pics\facebook.png"></a>
+            <a href = "http://youtube.com/officialbeedon" target ="new">
+                <img src="pics\youtube.png"></a>
+            </a>
+            <a href = "https://twitter.com/beedonofficial" target ="new">
+                <img src="pics\twitter.png"></a>
+            </a>
+            <br />
+            <a href = "http://djbeedon.com" target ="new">
+                <img src="pics\website.png"></a>
+            <a href = "https://itunes.apple.com/us/podcast/id880278587" target ="new">
+                <img src="pics\itunes.png"></a>
+            </a>
+
+        </h3>
+</body>
+</html>
+<!doctype html>

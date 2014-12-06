@@ -26,7 +26,7 @@
             var pass = document.forms["login"]["password"].value;
             var acc = document.forms["login"]["Account"].value;
 
-           
+
             var check = (getCookie("accounts"));
             if (check == "") {
                 alert("Invalid Username or Password!");
@@ -46,9 +46,8 @@
                     //	Parse myCookie string:
                     var GetCookie = JSON.parse(myCookie);
                     var accC = ("" + GetCookie["Account"]);
-                    var userC = (+GetCookie["Username"]);
-                    var passC = (+GetCookie["Password"]);
-
+                    var userC = (""+GetCookie["Username"]);
+                    var passC = (""+GetCookie["Password"]);
 
 
                     if (userC == "") {
@@ -63,6 +62,7 @@
                             return true;
                         } else {
                             alert("The User Account \"" + user + "\" is a User Account. Please Log In on the User Log In Page.");
+                            document.location.href = "login.html";
                         }
                     } else {
                         alert("Invalid Username or Password!");
@@ -200,11 +200,6 @@
                          var user = $_GET["Username"];
                          var pass = $_GET["Password"];
 
-
-
-                         //Setting that info to a cookie
-                         setCookie(user, pass, 30);
-
                          document.write("<h2>Thank you for signing up <strong>" + user + "</strong>! Please Log In Below:</h2>");
 
                          //	Clean HTML encoded characters:
@@ -233,7 +228,7 @@
 
                          //	Get cookie:
                          var accountCookie = getCookie('accounts');
-                         accountCookie += ("<br>" + cookieStr);
+                         accountCookie += ("<br><br>" + cookieStr);
                          newTemp = accountCookie.replace(/"/g, " ");
                          setCookie('accounts', newTemp, 30);
 
@@ -251,10 +246,12 @@
                          var GetCookie = JSON.parse(myCookie);
                          //	Display GetCookie:
                          document.write("<h2>Account Information:</h2>");
-                         document.write("<h4>");
+                         document.write("<h3>");
                          for (var name in GetCookie) {
                              if (name != "Password") {
-                                 document.write(name + ": " + GetCookie[name] + "<br>");
+                                 if (name == "Date") { } else {
+                                     document.write(name + ": " + GetCookie[name] + "<br>");
+                                 }
                              } else {
                                  var pass2 = "";
 
