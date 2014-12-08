@@ -135,7 +135,7 @@
 
 
     <div id="1" style="display:none">
-        <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/1.jpg) no-repeat">
+        <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/1.jpg) repeat-y">
             <br />
             <div align="center">
                    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -150,7 +150,7 @@
         <br /><br /><br />
     </div>
    <div id="2" style="display:none">
-        <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/2.jpg) no-repeat">
+        <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/2.jpg) repeat-y">
             <br />
             <div align="center">
                   <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -165,7 +165,7 @@
        <br /><br /><br />
     </div>
      <div id="3" style="display:none">
-        <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/3.jpg) no-repeat">
+        <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/3.jpg) repeat-y">
             <br />
             <div align="center">
                   <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -182,7 +182,7 @@
 
 
    <div id="4" style="display:none">
-        <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/defeat.jpg) no-repeat">
+        <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/defeat.jpg) repeat-y">
             <br />
             <div align="center">
                   <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -216,13 +216,13 @@
 
     <div id="intro">
          
-         <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/intro1.jpg) no-repeat">
+         <div style="margin-left: auto; margin-right: auto; width: 95%; background:url(pics/intro1.jpg) repeat-y">
              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
              <br /><br /><br />
              <div align="center">
                 <button id="chooseHero" onclick="selectHero()" align="center">Choose Your Hero</button>
              </div>
-             <br /><br /><br />
+             <br />
         </div>
        </div>
 
@@ -558,8 +558,8 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
         function attack1() {
             //Sets 75% Chance of Hitting
             var youHit = Math.floor(Math.random() * 4);
-            //Sets 25% of being too slow for Aragorn
-            var slowHit = Math.floor(Math.random() * 4);
+            //Sets 20% of being too slow for Aragorn
+            var slowHit = Math.floor(Math.random() * 5);
             //Sets random number to be used for Legolas Multiple hits
             var count = Math.floor((Math.random() * 100) + 1);
             //Assigns Random Damage For Each Move
@@ -571,7 +571,7 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
             
                 setTimeout(function () {
                     if (youHit < 3) {
-                        if ((Ally.name == "Aragorn the Swordsman") && (slowHit > 2)) {
+                        if ((Ally.name == "Aragorn the Swordsman") && (slowHit > 3)) {
                             document.getElementById("attacks").innerHTML = ("Your Attack Was Too Slow!");
                         }else{
                             Enemy.health -= Ally.att1;
@@ -581,33 +581,37 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                 } else {
                         document.getElementById("attacks").innerHTML = ("Your Attack Missed!");
                     }
-                    //If active, Reduces double damage duration by 1
-                    if (items.ddA > 1) { items.ddA--; }
-                    //Notifies users that DD wore off
-                    if (items.ddA == 1) {
-                        refreshScreen();
-                        alert("Double Damage has worn off!");
-                        items.ddA--;
+                    
+                    setTimeout(function () {
+                        //If active, Reduces double damage duration by 1
+                        if (items.ddA > 1) { items.ddA--; }
+                        //Notifies users that DD wore off
+                        if (items.ddA == 1) {
+                            refreshScreen();
+                            alert("Double Damage has worn off!");
+                            items.ddA--;
 
-                        if (items.invisA > 1) {
-                            if (Ally.name == "Aragorn the Swordsman") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/use/aragorn5.jpg' style='float:left'/>";
-                            } else if (Ally.name == "Legolas the Archer") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/use/legolas5.jpg' style='float:left'/>";
-                            } else if (Ally.name == "Gandalf the Wizard") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/use/gandalf5.jpg' style='float:left'/>";
-                            }
-                        } else {
-                            if (Ally.name == "Aragorn the Swordsman") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/aragorn.jpg' style='float:left'/>";
-                            } else if (Ally.name == "Legolas the Archer") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/legolas.jpg' style='float:left'/>";
-                            } else if (Ally.name == "Gandalf the Wizard") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/gandalf.jpg' style='float:left'/>";
+                            if (items.invisA > 1) {
+                                if (Ally.name == "Aragorn the Swordsman") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/use/aragorn5.jpg' style='float:left'/>";
+                                } else if (Ally.name == "Legolas the Archer") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/use/legolas5.jpg' style='float:left'/>";
+                                } else if (Ally.name == "Gandalf the Wizard") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/use/gandalf5.jpg' style='float:left'/>";
+                                }
+                            } else {
+                                if (Ally.name == "Aragorn the Swordsman") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/aragorn.jpg' style='float:left'/>";
+                                } else if (Ally.name == "Legolas the Archer") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/legolas.jpg' style='float:left'/>";
+                                } else if (Ally.name == "Gandalf the Wizard") {
+                                    document.getElementById("pic").innerHTML = "<img src='pics/gandalf.jpg' style='float:left'/>";
+                                }
                             }
                         }
-                    }
-                    setTimeout(function () { enemyAttack(); }, 3000);
+
+                        enemyAttack();
+                    }, 3000);
             }, 3000);
                 
         }
@@ -619,8 +623,8 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
             
             //Sets 75% Chance of Hitting
             var youHit = Math.floor(Math.random() * 4);
-            //Sets 25% of being too slow for Aragorn
-            var slowHit = Math.floor(Math.random() * 4);
+            //Sets 20% of being too slow for Aragorn
+            var slowHit = Math.floor(Math.random() * 5);
             //Sets random number to be used for Legolas Multiple hits
             var count = Math.floor((Math.random() * 100) + 1);
             //Assigns Random Damage For Each Move
@@ -679,50 +683,11 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                         document.getElementById("attacks").innerHTML = ("Your Attack Hit " + times + " Times! Damage Dealt: " + Ally.att2 + " Total Damage: " + tDmg);
                         time = 9000;
                     }
-                    //If active, Reduces double damage duration by 1
-                    if (items.ddA > 1) { items.ddA--; }
-                    //Notifies users that DD wore off
-                    if (items.ddA == 1) {
-                        refreshScreen();
-                        alert("Double Damage has worn off!");
-                        items.ddA--;
-
-                        if (items.invisA > 1) {
-                            if (Ally.name == "Aragorn the Swordsman") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/use/aragorn5.jpg' style='float:left'/>";
-                            } else if (Ally.name == "Legolas the Archer") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/use/legolas5.jpg' style='float:left'/>";
-                            } else if (Ally.name == "Gandalf the Wizard") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/use/gandalf5.jpg' style='float:left'/>";
-                            }
-                        } else {
-                            if (Ally.name == "Aragorn the Swordsman") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/aragorn.jpg' style='float:left'/>";
-                            } else if (Ally.name == "Legolas the Archer") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/legolas.jpg' style='float:left'/>";
-                            } else if (Ally.name == "Gandalf the Wizard") {
-                                document.getElementById("pic").innerHTML = "<img src='pics/gandalf.jpg' style='float:left'/>";
-                            }
-                        }
-                    }
-                    setTimeout(function () { enemyAttack(); }, 4000+(1000*(count/20)));
-                } else {
-                    Ally.mana -= Ally.att2M;
-                    refreshScreen();
-                        if ((Ally.name == "Aragorn the Swordsman") && (slowHit > 2)) {
-                            document.getElementById("attacks").innerHTML = "";
-                            document.getElementById("attacks").innerHTML = ("Your Attack Was Too Slow!");
-                        }
-                        else if (youHit < 3) {
-                            Enemy.health -= Ally.att2;
-                            refreshScreen();
-                            document.getElementById("attacks").innerHTML = ("Your Attack Hit! Damage Dealt: " + Ally.att2);
-                        } else {
-                            document.getElementById("attacks").innerHTML = ("Your Attack Missed!");
-                        }
-                    //If active, Reduces double damage duration by 1
+                   
+                    setTimeout(function () {
+                        //If active, Reduces double damage duration by 1
                         if (items.ddA > 1) { items.ddA--; }
-                    //Notifies users that DD wore off
+                        //Notifies users that DD wore off
                         if (items.ddA == 1) {
                             refreshScreen();
                             alert("Double Damage has worn off!");
@@ -746,7 +711,52 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                                 }
                             }
                         }
-                        setTimeout(function () { enemyAttack(); }, 3000);
+                        enemyAttack();
+                    }, 4000 + (1000 * (count / 20)));
+                } else {
+                    Ally.mana -= Ally.att2M;
+                    refreshScreen();
+                        if ((Ally.name == "Aragorn the Swordsman") && (slowHit > 3)) {
+                            document.getElementById("attacks").innerHTML = "";
+                            document.getElementById("attacks").innerHTML = ("Your Attack Was Too Slow!");
+                        }
+                        else if (youHit < 3) {
+                            Enemy.health -= Ally.att2;
+                            refreshScreen();
+                            document.getElementById("attacks").innerHTML = ("Your Attack Hit! Damage Dealt: " + Ally.att2);
+                        } else {
+                            document.getElementById("attacks").innerHTML = ("Your Attack Missed!");
+                        }
+                    
+                        setTimeout(function () {
+                            //If active, Reduces double damage duration by 1
+                            if (items.ddA > 1) { items.ddA--; }
+                            //Notifies users that DD wore off
+                            if (items.ddA == 1) {
+                                refreshScreen();
+                                alert("Double Damage has worn off!");
+                                items.ddA--;
+
+                                if (items.invisA > 1) {
+                                    if (Ally.name == "Aragorn the Swordsman") {
+                                        document.getElementById("pic").innerHTML = "<img src='pics/use/aragorn5.jpg' style='float:left'/>";
+                                    } else if (Ally.name == "Legolas the Archer") {
+                                        document.getElementById("pic").innerHTML = "<img src='pics/use/legolas5.jpg' style='float:left'/>";
+                                    } else if (Ally.name == "Gandalf the Wizard") {
+                                        document.getElementById("pic").innerHTML = "<img src='pics/use/gandalf5.jpg' style='float:left'/>";
+                                    }
+                                } else {
+                                    if (Ally.name == "Aragorn the Swordsman") {
+                                        document.getElementById("pic").innerHTML = "<img src='pics/aragorn.jpg' style='float:left'/>";
+                                    } else if (Ally.name == "Legolas the Archer") {
+                                        document.getElementById("pic").innerHTML = "<img src='pics/legolas.jpg' style='float:left'/>";
+                                    } else if (Ally.name == "Gandalf the Wizard") {
+                                        document.getElementById("pic").innerHTML = "<img src='pics/gandalf.jpg' style='float:left'/>";
+                                    }
+                                }
+                            }
+                            enemyAttack();
+                        }, 3000);
                     }
                 
             }, 3000);
@@ -755,8 +765,8 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
         function attack3() {
             //Sets 75% Chance of Hitting
             var youHit = Math.floor(Math.random() * 4);
-            //Sets 25% of being too slow for Aragorn
-            var slowHit = Math.floor(Math.random() * 4);
+            //Sets 20% of being too slow for Aragorn
+            var slowHit = Math.floor(Math.random() * 5);
             //Sets random number to be used for Legolas Multiple hits
             var count = Math.floor((Math.random() * 100) + 1);
             //Assigns Random Damage For Each Move
@@ -767,7 +777,7 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
 
             setTimeout(function () {
                 if (youHit < 3) {
-                    if ((Ally.name == "Aragorn the Swordsman") && (slowHit > 2)) {
+                    if ((Ally.name == "Aragorn the Swordsman") && (slowHit > 3)) {
                         document.getElementById("attacks").innerHTML = ("Your Attack Was Too Slow!");
                     } else {
                         Enemy.health -= Ally.att3;
@@ -810,7 +820,7 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                         }
                     }
                 }
-                enemyAttack();
+                setTimeout(function () { enemyAttack(); }, 3000);
             }, 3000);
 
         }
@@ -1015,8 +1025,6 @@ Purpose: This is a recursive function beings the fighting phase of the game. Aft
                 Ally.health = 200;
                 refreshScreen();
                 alert("Your Health Has Been Restored!");
-                document.getElementById("pic").innerHTML = "<img src='pics/use/legolas1.jpg' style='float:left'/>";
-                document.getElementById("pic").innerHTML = "<img src='pics/legolas.jpg' style='float:left'/>";
                 enemyAttack();
             }
         } function item2() {
@@ -1171,52 +1179,52 @@ Purpose: This function refreshes the screen and updates different properties suc
             //Displaying Enemy's Health
             document.getElementById("enemyhealth").innerHTML = ("&nbsp;&nbsp;Health: " + parseInt(Enemy.health / 8) + "%");
             document.getElementById("Ebars").innerHTML = "";
-            for (var i = 0; i < Enemy.health / 10 * 2; i++) {
-                document.getElementById("Ebars").innerHTML += "<img src=\'pics/Ehp2.png\'>";
+            for (var i = 0; i < Enemy.health / 40; i++) {
+                document.getElementById("Ebars").innerHTML += "<img src=\'pics/Ehp.png\'>";
             }
             
             //Displaying Armor
             if (Ally.name == "Aragorn the Swordsman") {
                 document.getElementById("health").innerHTML = ("&nbsp;&nbsp;Armor: " + parseInt(Ally.armor / 2) + "%");
                 document.getElementById("Hbars").innerHTML = "";
-                for (var i = 0; i < Ally.armor / 2.5 * 2 ; i++) {
-                    document.getElementById("Hbars").innerHTML += "<img src=\'pics/arm.png\'>";
+                for (var i = 0; i < Ally.armor / 10; i++) {
+                    document.getElementById("Hbars").innerHTML += "<img src=\'pics/arm2.png\'>";
                 }
                 //Displaying Health
                 document.getElementById("mana").innerHTML = ("&nbsp;&nbsp;Health: " + parseInt(Ally.health / 2) + "%");
                 document.getElementById("Mbars").innerHTML = "";
-                for (var i = 0; i < Ally.health / 2.5 * 2; i++) {
-                    document.getElementById("Mbars").innerHTML += "<img src=\'pics/hp2.png\'>";
+                for (var i = 0; i < Ally.health / 10; i++) {
+                    document.getElementById("Mbars").innerHTML += "<img src=\'pics/hp.png\'>";
                 }
             }else if (Ally.name == "Legolas the Archer") {
                 //Displaying Health
                 document.getElementById("health").innerHTML = ("&nbsp;&nbsp;Health: " + parseInt(Ally.health / 2) + "%");
                 document.getElementById("Hbars").innerHTML = "";
-                for (var i = 0; i < Ally.health / 2.5 * 2 ; i++) {
-                    document.getElementById("Hbars").innerHTML += "<img src=\'pics/hp2.png\'>";
+                for (var i = 0; i < Ally.health / 10 ; i++) {
+                    document.getElementById("Hbars").innerHTML += "<img src=\'pics/hp.png\'>";
                 }
 
 
                 //Displaying Mana
                 document.getElementById("mana").innerHTML = ("&nbsp;&nbsp;Mana: " + parseInt(Ally.mana) + "%");
                 document.getElementById("Mbars").innerHTML = "";
-                for (var i = 0; i < Ally.mana / 1.25 * 2; i++) {
-                    document.getElementById("Mbars").innerHTML += "<img src=\'pics/mp2.png\'>";
+                for (var i = 0; i < Ally.mana / 5; i++) {
+                    document.getElementById("Mbars").innerHTML += "<img src=\'pics/mp.png\'>";
                 }
             } else if (Ally.name == "Gandalf the Wizard") {
                 //Displaying Health
                 document.getElementById("health").innerHTML = ("&nbsp;&nbsp;Health: " + parseInt(Ally.health / 2) + "%");
                 document.getElementById("Hbars").innerHTML = "";
-                for (var i = 0; i < Ally.health / 2.5 * 2 ; i++) {
-                    document.getElementById("Hbars").innerHTML += "<img src=\'pics/hp2.png\'>";
+                for (var i = 0; i < Ally.health / 10; i++) {
+                    document.getElementById("Hbars").innerHTML += "<img src=\'pics/hp.png\'>";
                 }
 
 
                 //Displaying Mana
                 document.getElementById("mana").innerHTML = ("&nbsp;&nbsp;Mana: " + parseInt(Ally.mana) + "%");
                 document.getElementById("Mbars").innerHTML = "";
-                for (var i = 0; i < Ally.mana / 1.25 * 2; i++) {
-                    document.getElementById("Mbars").innerHTML += "<img src=\'pics/mp2.png\'>";
+                for (var i = 0; i < Ally.mana / 5; i++) {
+                    document.getElementById("Mbars").innerHTML += "<img src=\'pics/mp.png\'>";
                 }
             }
         }
